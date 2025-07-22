@@ -3461,3 +3461,231 @@ p[style*="font-size: 1.2rem"] {
     padding: 2rem 1rem;
   }
 }
+
+/* =========================== */
+/* COLOR PALETTE STUDIO MOBILE RESPONSIVE */
+/* Tối ưu hiển thị trên điện thoại */
+/* =========================== */
+
+/* Mobile-first cho Color Palette Studio */
+@media (max-width: 480px) {
+  /* Palette Categories Grid - hiển thị 2x2 grid thay vì 4 hàng */
+  .palette-categories-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem;
+  }
+  
+  .palette-category {
+    padding: 1rem !important;
+    font-size: 0.9rem;
+  }
+  
+  .category-info h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.3rem;
+  }
+  
+  .category-info p {
+    font-size: 0.8rem !important;
+    line-height: 1.3;
+  }
+  
+  .preview-colors {
+    height: 30px !important;
+    margin-bottom: 0.5rem;
+  }
+  
+  .preview-colors div {
+    height: 30px !important;
+  }
+  
+  /* Main Color Swatches - hiển thị 4 màu trên 1 hàng */
+  .main-color-swatches {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.8rem !important;
+    margin-bottom: 2rem;
+  }
+  
+  .color-swatch-premium {
+    aspect-ratio: 1 !important;
+    min-height: 60px;
+  }
+  
+  .color-info-detailed {
+    font-size: 0.7rem !important;
+    padding: 0.3rem;
+  }
+  
+  .color-name-premium {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.2rem;
+  }
+  
+  .color-hex-premium {
+    font-size: 0.7rem !important;
+  }
+  
+  /* Usage Guide - compact layout */
+  .color-usage-guide {
+    padding: 1rem !important;
+  }
+  
+  .color-usage-guide h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 1rem;
+  }
+  
+  .usage-examples {
+    display: block !important;
+  }
+  
+  .usage-example {
+    margin-bottom: 1.5rem;
+  }
+  
+  .usage-demo {
+    height: 60px !important;
+    margin-bottom: 1rem;
+  }
+  
+  .usage-tips {
+    margin-top: 1rem;
+  }
+  
+  .usage-tips h5 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem;
+  }
+  
+  .usage-tips ul {
+    padding-left: 1rem;
+  }
+  
+  .usage-tips li {
+    font-size: 0.9rem !important;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* Palette Actions - stack buttons */
+  .palette-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    width: 100%;
+  }
+  
+  .action-btn {
+    width: 100% !important;
+    padding: 0.8rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Palette Header - mobile layout */
+  .palette-header {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .palette-header h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Tablet responsive - 481px to 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .palette-categories-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+  
+  .main-color-swatches {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1rem !important;
+  }
+  
+  .usage-examples {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+}
+
+/* =========================== */
+/* JOIN THE ART DECO REVOLUTION BUTTONS FIX */
+/* =========================== */
+
+/* Button Container cho Join the Art Deco Revolution */
+[style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  flex-wrap: wrap;
+}
+
+/* Đồng nhất kích thước và style cho cả hai button */
+[style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] .btn-art-deco {
+  min-width: 180px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 0 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+  border-radius: 25px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Hover effects đồng nhất */
+[style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] .btn-art-deco:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Đảm bảo text trong button căn giữa */
+[style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] .btn-art-deco span {
+  display: block !important;
+  text-align: center !important;
+  width: 100% !important;
+  line-height: 1 !important;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  [style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+  }
+  
+  [style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] .btn-art-deco {
+    min-width: 200px !important;
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] {
+    gap: 1rem !important;
+  }
+  
+  [style*="display: flex"][style*="justify-content: center"][style*="gap: 2rem"] .btn-art-deco {
+    min-width: 160px !important;
+    height: 45px !important;
+    font-size: 0.9rem !important;
+    max-width: 250px !important;
+  }
+}

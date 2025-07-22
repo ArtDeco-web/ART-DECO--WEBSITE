@@ -126,18 +126,30 @@
 
         .loader-sunburst::before {
             transform: translate(-50%, -50%) rotate(0deg);
-            box-shadow: 0 0 0 0 var(--primary-gold),
-                        0 0 0 0 var(--primary-gold),
-                        0 0 0 0 var(--primary-gold),
-                        0 0 0 0 var(--primary-gold);
+            box-shadow: 
+                0 0 0 0 var(--primary-gold),
+                20px 0 0 -2px var(--primary-gold),
+                14px 14px 0 -2px var(--primary-gold),
+                0 20px 0 -2px var(--primary-gold),
+                -14px 14px 0 -2px var(--primary-gold),
+                -20px 0 0 -2px var(--primary-gold),
+                -14px -14px 0 -2px var(--primary-gold),
+                0 -20px 0 -2px var(--primary-gold),
+                14px -14px 0 -2px var(--primary-gold);
         }
 
         .loader-sunburst::after {
             transform: translate(-50%, -50%) rotate(45deg);
-            box-shadow: 0 0 0 0 var(--primary-gold),
-                        0 0 0 0 var(--primary-gold),
-                        0 0 0 0 var(--primary-gold),
-                        0 0 0 0 var(--primary-gold);
+            box-shadow: 
+                0 0 0 0 var(--primary-gold),
+                20px 0 0 -2px var(--primary-gold),
+                14px 14px 0 -2px var(--primary-gold),
+                0 20px 0 -2px var(--primary-gold),
+                -14px 14px 0 -2px var(--primary-gold),
+                -20px 0 0 -2px var(--primary-gold),
+                -14px -14px 0 -2px var(--primary-gold),
+                0 -20px 0 -2px var(--primary-gold),
+                14px -14px 0 -2px var(--primary-gold);
         }
 
         @keyframes sunburstRotate {
@@ -200,7 +212,7 @@
             white-space: nowrap;
             margin: 0 auto;
             letter-spacing: 0.1em;
-            animation: typewriter 3s steps(8) 1s both, blink 0.7s infinite;
+            animation: typewriter 4s steps(15) 1s both, blink 0.7s infinite;
         }
 
         @keyframes typewriter {
@@ -235,23 +247,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .clickable-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
-            transition: left 0.5s ease;
-            z-index: 1;
-        }
-
-        .clickable-card:hover::before {
-            left: 100%;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .clickable-card:hover {
@@ -271,7 +267,6 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            z-index: 2;
         }
 
         .clickable-card:hover .click-overlay {
@@ -293,7 +288,7 @@
             overflow: hidden;
         }
 
-        .golden-sweep::after {
+        .golden-sweep::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -303,16 +298,15 @@
             background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.3), transparent);
             transform: translateX(-100%) translateY(-100%) rotate(45deg);
             transition: transform 0.6s ease;
-            z-index: 1;
         }
 
-        .golden-sweep:hover::after {
+        .golden-sweep:hover::before {
             transform: translateX(100%) translateY(100%) rotate(45deg);
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero-title { font-size: 3rem; }
+            .hero-title { font-size: 2.5rem; }
             .hero-content { padding: 4rem 0; }
             .loader-diamond { width: 60px; height: 60px; }
             .loader-zigzag { width: 150px; }
@@ -354,6 +348,7 @@
                 transform: scale(1) translateY(0);
             }
         }
+        
         /* === INTERACTIVE TIMELINE STYLES === */
         .art-deco-timeline-section {
             background: var(--primary-dark);
@@ -927,7 +922,7 @@
             <!-- Main Featured Article -->
             <div class="art-deco-card golden-sweep" style="background: var(--gradient-gold); color: var(--primary-dark); margin-bottom: 3rem;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-                    <div class="clickable-card" data-modal="featured-main-modal">
+                    <div class="clickable-card golden-sweep" data-modal="featured-main-modal">
                         <!-- Image: 500x350px - Modern UX UI with Art Deco influence -->
                         <img src="images/ux-ui-art-deco.jpg" alt="Art Deco in UX/UI Design" style="width: 100%; height: 350px; object-fit: cover; border-radius: 10px; cursor: pointer;">
                         <div class="click-overlay">
@@ -958,7 +953,7 @@
             <!-- Secondary News Grid -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
                 
-                <div class="art-deco-card clickable-card" data-modal="luxury-hotel-news-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="luxury-hotel-news-modal">
                     <!-- Image: 300x200px - Luxury hotel Art Deco interior -->
                     <img src="images/luxury-hotel-news.jpg" alt="Luxury Hotel Art Deco" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <div style="padding: 1rem;">
@@ -976,7 +971,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="fashion-week-deco-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="fashion-week-deco-modal">
                     <!-- Image: 300x200px - Fashion week Art Deco inspired -->
                     <img src="images/fashion-week-deco.jpg" alt="Fashion Week Art Deco" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <div style="padding: 1rem;">
@@ -994,7 +989,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="game-design-deco-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="game-design-deco-modal">
                     <!-- Image: 300x200px - Game design Art Deco -->
                     <img src="images/game-design-deco.jpg" alt="Game Design Art Deco" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <div style="padding: 1rem;">
@@ -1031,7 +1026,7 @@
                     <div style="padding: 2rem;">
                         <h3 style="color: var(--primary-gold); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center;">Cinema & Entertainment</h3>
                         
-                        <div style="margin-bottom: 2rem;" class="clickable-card" data-modal="cultural-modal-1">
+                        <div style="margin-bottom: 2rem;" class="clickable-card golden-sweep" data-modal="cultural-modal-1">
                             <!-- Image: 350x200px - Great Gatsby movie Art Deco -->
                             <img src="images/great-gatsby-movie.jpg" alt="The Great Gatsby Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
                             <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">The Great Gatsby (2013)</h4>
@@ -1041,7 +1036,7 @@
                             </div>
                         </div>
 
-                        <div style="margin-bottom: 2rem;" class="clickable-card" data-modal="cultural-modal-2">
+                        <div style="margin-bottom: 2rem;" class="clickable-card golden-sweep" data-modal="cultural-modal-2">
                             <!-- Image: 350x200px - Blade Runner Art Deco -->
                             <img src="images/blade-runner-deco.jpg" alt="Blade Runner Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
                             <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Blade Runner (1982, 2049)</h4>
@@ -1051,7 +1046,7 @@
                             </div>
                         </div>
 
-                        <div class="clickable-card" data-modal="cultural-modal-3">
+                        <div class="clickable-card golden-sweep" data-modal="cultural-modal-3">
                             <!-- Image: 350x200px - Bioshock game Art Deco -->
                             <img src="images/bioshock-art-deco.jpg" alt="Bioshock Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
                             <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Bioshock (2007)</h4>
@@ -1068,7 +1063,7 @@
                     <div style="padding: 2rem;">
                         <h3 style="color: var(--primary-gold); font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center;">Music & Performance</h3>
                         
-                        <div style="margin-bottom: 2rem;" class="clickable-card" data-modal="cultural-modal-4">
+                        <div style="margin-bottom: 2rem;" class="clickable-card golden-sweep" data-modal="cultural-modal-4">
                             <!-- Image: 350x200px - Lady Gaga Art Deco style -->
                             <img src="images/lady-gaga-deco.jpg" alt="Lady Gaga Art Deco Style" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
                             <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Lady Gaga</h4>
@@ -1078,7 +1073,7 @@
                             </div>
                         </div>
 
-                        <div style="margin-bottom: 2rem;" class="clickable-card" data-modal="cultural-modal-5">
+                        <div style="margin-bottom: 2rem;" class="clickable-card golden-sweep" data-modal="cultural-modal-5">
                             <!-- Image: 350x200px - Broadway Art Deco shows -->
                             <img src="images/broadway-deco.jpg" alt="Broadway Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
                             <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Broadway Shows</h4>
@@ -1088,7 +1083,7 @@
                             </div>
                         </div>
 
-                        <div class="clickable-card" data-modal="cultural-modal-6">
+                        <div class="clickable-card golden-sweep" data-modal="cultural-modal-6">
                             <!-- Image: 350x200px - Concert stage Art Deco -->
                             <img src="images/concert-stage-deco.jpg" alt="Concert Stage Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
                             <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Concert Stages</h4>
@@ -1111,7 +1106,7 @@
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
                 
-                <div class="art-deco-card clickable-card" data-modal="digital-modal-1">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="digital-modal-1">
                     <!-- Image: 320x200px - Web design Art Deco -->
                     <img src="images/web-design-deco.jpg" alt="Web Design Art Deco" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Web Design</h3>
@@ -1130,7 +1125,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="digital-modal-2">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="digital-modal-2">
                     <!-- Image: 320x200px - Mobile app Art Deco -->
                     <img src="images/mobile-app-deco.jpg" alt="Mobile App Art Deco" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Mobile Apps</h3>
@@ -1149,7 +1144,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="digital-modal-3">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="digital-modal-3">
                     <!-- Image: 320x200px - AI art Art Deco -->
                     <img src="images/ai-art-deco.jpg" alt="AI Art Deco Generation" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">AI & Digital Art</h3>
@@ -1174,7 +1169,7 @@
             <div class="art-deco-card" style="background: var(--gradient-gold); color: var(--primary-dark); text-align: center; padding: 3rem;">
                 <h3 style="color: var(--primary-burgundy); margin-bottom: 2rem; font-size: 2rem;">Tech Giants Embracing Art Deco</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <div class="clickable-card" data-modal="digital-modal-4">
+                    <div class="clickable-card golden-sweep" data-modal="digital-modal-4">
                         <!-- Image: 200x150px - Apple Art Deco products -->
                         <img src="images/apple-deco-design.jpg" alt="Apple Art Deco Design" style="width: 100%; height: 150px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-burgundy); cursor: pointer;">
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Apple</h4>
@@ -1183,7 +1178,7 @@
                             <span class="click-hint">Click to explore</span>
                         </div>
                     </div>
-                    <div class="clickable-card" data-modal="digital-modal-5">
+                    <div class="clickable-card golden-sweep" data-modal="digital-modal-5">
                         <!-- Image: 200x150px - Google Art Deco interfaces -->
                         <img src="images/google-deco-ui.jpg" alt="Google Art Deco UI" style="width: 100%; height: 150px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-burgundy); cursor: pointer;">
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Google</h4>
@@ -1192,7 +1187,7 @@
                             <span class="click-hint">Click to explore</span>
                         </div>
                     </div>
-                    <div class="clickable-card" data-modal="digital-modal-6">
+                    <div class="clickable-card golden-sweep" data-modal="digital-modal-6">
                         <!-- Image: 200x150px - Tesla Art Deco -->
                         <img src="images/tesla-deco-design.jpg" alt="Tesla Art Deco Design" style="width: 100%; height: 150px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-burgundy); cursor: pointer;">
                         <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Tesla</h4>
@@ -1216,7 +1211,7 @@
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 
-                <div class="art-deco-card clickable-card" data-modal="future-modal-1" style="background: linear-gradient(135deg, #C9A961 0%, #8B7355 100%); color: white;">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="future-modal-1" style="background: linear-gradient(135deg, #C9A961 0%, #8B7355 100%); color: white;">
                     <div style="padding: 2rem; text-align: center;">
                         <!-- Image: 280x200px - AR VR Art Deco -->
                         <img src="images/ar-vr-deco.jpg" alt="AR VR Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border-radius: 10px; cursor: pointer;">
@@ -1235,7 +1230,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="future-modal-2" style="background: linear-gradient(135deg, #8B2635 0%, #5D1A22 100%); color: white;">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="future-modal-2" style="background: linear-gradient(135deg, #8B2635 0%, #5D1A22 100%); color: white;">
                     <div style="padding: 2rem; text-align: center;">
                         <!-- Image: 280x200px - Sustainable Art Deco -->
                         <img src="images/sustainable-deco.jpg" alt="Sustainable Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border-radius: 10px; cursor: pointer;">
@@ -1254,7 +1249,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="future-modal-3" style="background: linear-gradient(135deg, #2C3E50 0%, #1A252F 100%); color: white;">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="future-modal-3" style="background: linear-gradient(135deg, #2C3E50 0%, #1A252F 100%); color: white;">
                     <div style="padding: 2rem; text-align: center;">
                         <!-- Image: 280x200px - Blockchain Art Deco -->
                         <img src="images/blockchain-deco.jpg" alt="Blockchain Art Deco" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; border-radius: 10px; cursor: pointer;">
@@ -1284,7 +1279,7 @@
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
                 
-                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 15px;" class="clickable-card" data-modal="expert-modal-1">
+                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 15px;" class="clickable-card golden-sweep" data-modal="expert-modal-1">
                     <!-- Image: 150x150px - Design expert portrait -->
                     <img src="images/design-expert-1.jpg" alt="Design Expert" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid var(--primary-gold); cursor: pointer;">
                     <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Sarah Chen</h4>
@@ -1298,7 +1293,7 @@
                     </div>
                 </div>
 
-                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 15px;" class="clickable-card" data-modal="expert-modal-2">
+                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 15px;" class="clickable-card golden-sweep" data-modal="expert-modal-2">
                     <!-- Image: 150x150px - Tech analyst portrait -->
                     <img src="images/tech-expert-2.jpg" alt="Tech Expert" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid var(--primary-gold); cursor: pointer;">
                     <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Marcus Thompson</h4>
@@ -1312,7 +1307,7 @@
                     </div>
                 </div>
 
-                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 15px;" class="clickable-card" data-modal="expert-modal-3">
+                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 15px;" class="clickable-card golden-sweep" data-modal="expert-modal-3">
                     <!-- Image: 150x150px - Fashion expert portrait -->
                     <img src="images/fashion-expert-3.jpg" alt="Fashion Expert" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid var(--primary-gold); cursor: pointer;">
                     <h4 style="color: var(--primary-gold); margin-bottom: 0.5rem;">Isabella Rodriguez</h4>

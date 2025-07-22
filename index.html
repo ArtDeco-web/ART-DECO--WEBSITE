@@ -201,7 +201,7 @@
             white-space: nowrap;
             margin: 0 auto;
             letter-spacing: 0.1em;
-            animation: typewriter 3s steps(8) 1s both, blink 0.7s infinite;
+            animation: typewriter 4s steps(15) 1s both, blink 0.7s infinite;
         }
 
         @keyframes typewriter {
@@ -294,7 +294,7 @@
             overflow: hidden;
         }
 
-        .golden-sweep::after {
+        .golden-sweep::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -304,10 +304,9 @@
             background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.3), transparent);
             transform: translateX(-100%) translateY(-100%) rotate(45deg);
             transition: transform 0.6s ease;
-            z-index: 1;
         }
 
-        .golden-sweep:hover::after {
+        .golden-sweep:hover::before {
             transform: translateX(100%) translateY(100%) rotate(45deg);
         }
 
@@ -430,7 +429,7 @@
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
                 <!-- Geometry & Symmetry -->
-                <div class="art-deco-card clickable-card" data-modal="geometric-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="geometric-modal">
                     <!-- Image: 320x200px - Geometric patterns, zigzag designs -->
                     <img src="images/geometric-patterns.jpg" alt="Art Deco Geometric Patterns" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1.5rem; cursor: pointer;">
                     <h3 style="color: var(--primary-navy); font-size: 1.4rem; margin-bottom: 1rem;">Geometry & Symmetry</h3>
@@ -446,7 +445,7 @@
                 </div>
 
                 <!-- Materials & Colors -->
-                <div class="art-deco-card clickable-card" data-modal="materials-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="materials-modal">
                     <!-- Image: 320x200px - Luxury materials: gold, marble, wood -->
                     <img src="images/luxury-materials.jpg" alt="Art Deco Luxury Materials" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1.5rem; cursor: pointer;">
                     <h3 style="color: var(--primary-navy); font-size: 1.4rem; margin-bottom: 1rem;">Luxury Materials & Colors</h3>
@@ -462,7 +461,7 @@
                 </div>
 
                 <!-- International -->
-                <div class="art-deco-card clickable-card" data-modal="global-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="global-modal">
                     <!-- Image: 320x200px - Global Art Deco buildings montage -->
                     <img src="images/global-art-deco.jpg" alt="Art Deco Around the World" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1.5rem; cursor: pointer;">
                     <h3 style="color: var(--primary-navy); font-size: 1.4rem; margin-bottom: 1rem;">International & Multicultural</h3>
@@ -486,7 +485,7 @@
             <h2 class="section-title">Famous Art Deco Architecture</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 
-                <div class="art-deco-card clickable-card" data-modal="chrysler-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="chrysler-modal">
                     <!-- Image: 300x400px - Chrysler Building -->
                     <img src="images/chrysler-building.jpg" alt="Chrysler Building New York" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); margin-bottom: 0.5rem;">Chrysler Building</h3>
@@ -497,7 +496,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="empire-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="empire-modal">
                     <!-- Image: 300x400px - Empire State Building -->
                     <img src="images/empire-state-building.jpg" alt="Empire State Building" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); margin-bottom: 0.5rem;">Empire State Building</h3>
@@ -508,7 +507,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="miami-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="miami-modal">
                     <!-- Image: 300x400px - Miami Beach Art Deco District -->
                     <img src="images/miami-beach-art-deco.jpg" alt="Miami Beach Art Deco District" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); margin-bottom: 0.5rem;">Miami Art Deco District</h3>
@@ -543,7 +542,7 @@
             <h2 class="section-title">Applications in Many Fields</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
                 
-                <div class="art-deco-card clickable-card" data-modal="architecture-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="architecture-modal">
                     <!-- Image: 320x200px - Modern Art Deco architecture -->
                     <img src="images/modern-architecture.jpg" alt="Modern Art Deco Architecture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Architecture</h3>
@@ -553,7 +552,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="graphic-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="graphic-modal">
                     <!-- Image: 320x200px - Art Deco graphic design, posters -->
                     <img src="images/graphic-design.jpg" alt="Art Deco Graphic Design" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Graphic Design</h3>
@@ -563,7 +562,7 @@
                     </div>
                 </div>
 
-                <div class="art-deco-card clickable-card" data-modal="fashion-modal">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="fashion-modal">
                     <!-- Image: 320x200px - Art Deco fashion and furniture -->
                     <img src="images/fashion-furniture.jpg" alt="Art Deco Fashion and Furniture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
                     <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Fashion & Furniture</h3>
@@ -1352,98 +1351,83 @@
             });
         });
 
-        // Detail Modal System
-        function openDetailModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                
-                // Add entrance animation
-                const modalContent = modal.querySelector('.detail-modal-content');
-                modalContent.style.animation = 'slideInScale 0.5s ease-out';
+        // Modal System
+        class ModalManager {
+            constructor() {
+                this.initializeModals();
             }
-        }
 
-        function closeDetailModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                const modalContent = modal.querySelector('.detail-modal-content');
-                modalContent.style.animation = 'fadeOut 0.3s ease-out';
+            initializeModals() {
+                // Get all clickable cards
+                const clickableCards = document.querySelectorAll('.clickable-card');
                 
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }, 300);
+                // Add click event listeners
+                clickableCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        const modalId = card.getAttribute('data-modal');
+                        this.openModal(modalId);
+                    });
+                });
+
+                // Close buttons
+                const closeButtons = document.querySelectorAll('.detail-close');
+                closeButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.closeModal();
+                    });
+                });
+
+                // Close when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('detail-modal')) {
+                        this.closeModal();
+                    }
+                });
+
+                // Close with ESC key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeModal();
+                    }
+                });
             }
-        }
 
-        function closeAllDetailModals() {
-            document.querySelectorAll('.detail-modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-            document.body.style.overflow = 'auto';
-        }
-
-        // Click handlers for clickable cards
-        document.querySelectorAll('.clickable-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                const modalId = this.getAttribute('data-modal');
-                if (modalId) {
-                    openDetailModal(modalId);
-                }
-            });
-        });
-
-        // Close button handlers
-        document.querySelectorAll('.detail-close').forEach(closeBtn => {
-            closeBtn.addEventListener('click', function() {
-                const modal = this.closest('.detail-modal');
+            openModal(modalId) {
+                const modal = document.getElementById(modalId);
                 if (modal) {
-                    closeDetailModal(modal.id);
-                }
-            });
-        });
-
-        // Click outside to close
-        document.querySelectorAll('.detail-modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeDetailModal(this.id);
-                }
-            });
-        });
-
-        // ESC key to close all modals
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeAllDetailModals();
-            }
-        });
-
-        // Prevent modal content scroll from closing modal
-        document.querySelectorAll('.detail-modal-content').forEach(content => {
-            content.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        });
-
-        // Add fadeOut animation keyframe
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeOut {
-                from {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-                to {
-                    opacity: 0;
-                    transform: scale(0.95);
+                    modal.style.display = 'flex';
+                    modal.style.opacity = '0';
+                    modal.style.transform = 'scale(0.9)';
+                    
+                    // Animate in
+                    setTimeout(() => {
+                        modal.style.opacity = '1';
+                        modal.style.transform = 'scale(1)';
+                    }, 10);
+                    
+                    // Prevent body scroll
+                    document.body.style.overflow = 'hidden';
                 }
             }
-        `;
-        document.head.appendChild(style);
+
+            closeModal() {
+                const openModals = document.querySelectorAll('.detail-modal[style*="display: flex"]');
+                openModals.forEach(modal => {
+                    modal.style.opacity = '0';
+                    modal.style.transform = 'scale(0.9)';
+                    
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 300);
+                });
+                
+                // Restore body scroll
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Initialize modal manager
+        const modalManager = new ModalManager();
     </script>
 </body>
 </html> 
