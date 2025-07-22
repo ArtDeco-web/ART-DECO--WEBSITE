@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Deco - Elegant Artistic Design Style</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="art-deco-design-system.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="images/art-deco-hero-bg.jpg" as="image">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="art-deco-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical CSS for Above-the-fold -->
+    <style>
+        /* Critical CSS - inline for faster loading */
+        .hero-section { min-height: 100vh; position: relative; }
+        .hero-image-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 8rem 0; }
+        .hero-title { font-size: 5rem; font-weight: 700; color: var(--primary-gold); margin-bottom: 2rem; }
+        .navbar { background: var(--primary-dark); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+        .art-deco-card { background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        
+        /* Art Deco Loading Animation */
+        .art-deco-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .art-deco-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-container {
+            text-align: center;
+            color: var(--primary-gold);
+        }
+
+        .loader-diamond {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--primary-gold);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            animation: diamondRotate 2s linear infinite;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .loader-diamond::before,
+        .loader-diamond::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+        }
+
+        .loader-diamond::before {
+            border-left: 4px solid var(--primary-gold);
+            border-right: 4px solid var(--primary-gold);
+            animation: diamondRotate 1.5s linear infinite reverse;
+        }
+
+        .loader-diamond::after {
+            border-top: 4px solid var(--primary-gold);
+            border-bottom: 4px solid var(--primary-gold);
+            animation: diamondRotate 1s linear infinite;
+        }
+
+        @keyframes diamondRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-zigzag {
+            width: 200px;
+            height: 20px;
+            background: linear-gradient(45deg, transparent 30%, var(--primary-gold) 30%, var(--primary-gold) 70%, transparent 70%),
+                        linear-gradient(-45deg, transparent 30%, var(--primary-gold) 30%, var(--primary-gold) 70%, transparent 70%);
+            background-size: 30px 20px;
+            animation: zigzagMove 2s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes zigzagMove {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 30px 0, -30px 0; }
+        }
+
+        .loader-sunburst {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 2rem auto;
+            animation: sunburstRotate 3s linear infinite;
+        }
+
+        .loader-sunburst::before,
+        .loader-sunburst::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 40px;
+            background: var(--primary-gold);
+            transform-origin: 2px 2px;
+        }
+
+        .loader-sunburst::before {
+            transform: translate(-50%, -50%) rotate(0deg);
+            box-shadow: 0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold);
+        }
+
+        .loader-sunburst::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+            box-shadow: 0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold);
+        }
+
+        @keyframes sunburstRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Particle System */
+        .art-deco-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-gold);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.1em;
+            animation: typewriter 3s steps(8) 1s both, blink 0.7s infinite;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-gold); }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax Effects */
+        .parallax-slow {
+            will-change: transform;
+        }
+
+        /* Enhanced Hover Effects */
+        .clickable-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .clickable-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+
+        .clickable-card:hover::before {
+            left: 100%;
+        }
+
+        .clickable-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .click-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.9), rgba(139, 69, 19, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .clickable-card:hover .click-overlay {
+            opacity: 1;
+        }
+
+        .click-hint {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Golden Sweep Effect */
+        .golden-sweep {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .golden-sweep::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+            z-index: 1;
+        }
+
+        .golden-sweep:hover::after {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .hero-content { padding: 4rem 0; }
+            .loader-diamond { width: 60px; height: 60px; }
+            .loader-zigzag { width: 150px; }
+            .loader-sunburst { width: 80px; height: 80px; }
+        }
+
+        /* Performance optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            .particle,
+            .typewriter,
+            .reveal-element,
+            .art-deco-card,
+            .golden-sweep::before,
+            .click-overlay {
+                animation: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Art Deco Loading Animation -->
+    <div id="art-deco-loader" class="art-deco-loader">
+        <div class="loader-container">
+            <div class="loader-diamond"></div>
+            <div class="loader-zigzag"></div>
+            <div class="loader-sunburst"></div>
+            <div class="loader-text">ART DECO</div>
+        </div>
+    </div>
+
+    <!-- Particle System -->
+    <div id="art-deco-particles" class="art-deco-particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="artists.html" class="nav-link">Artists</a>
+                <a href="designers.html" class="nav-link">Designers</a>
+                <a href="news.html" class="nav-link">News</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section sun-rays" id="hero">
+        <!-- Hero Image Container -->
+        <div class="hero-image-container">
+            <img src="images/art-deco-hero-bg.jpg" alt="Art Deco Architecture" class="hero-image parallax-slow" style="opacity: 0.7; display: block;" loading="eager">
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title typewriter">ART DECO</h1>
+                <p style="font-size: 1.5rem; margin: 2rem 0; color: var(--primary-light); font-style: italic;">
+                    Luxury art and design style of the 20th century
+                </p>
+                <div class="zigzag-pattern parallax-slow" style="margin: 3rem auto; width: 300px;"></div>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: var(--primary-light);">
+                    Discover the bold geometric beauty, precise balance and luxurious materials 
+                    of Art Deco style - a symbol of modernity and sophistication.
+                </p>
+                <button class="btn-art-deco golden-sweep" style="margin-top: 2rem;" onclick="scrollToHistory()">
+                    <span>EXPLORE NOW</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- History & Origins -->
+    <section class="section slide-up reveal-element" id="history">
+        <div class="container">
+            <h2 class="section-title">History & Origins</h2>
+            
+            <!-- Timeline with historical images -->
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; margin-bottom: 3rem;">
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="paris-modal">
+                    <!-- Image: 400x500px - Paris 1920s or Art Deco exhibition photo -->
+                    <img src="images/paris-1920s.jpg" alt="Paris 1920s Art Deco Era" style="width: 100%; height: 400px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 1rem;">Paris 1920-1930</h3>
+                    <p style="text-align: center; font-style: italic;">"The Heart of Art Deco"</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+                <div class="reveal-element">
+                    <div class="art-deco-card" style="max-width: 100%;">
+                        <p style="font-size: 1.2rem; line-height: 1.8; text-align: justify;">
+                            <strong>Art Deco</strong> (also written as Art Déco) is an artistic and design style that flourished from the early 20th century, 
+                            associated with luxury, modernity, and bold geometric forms. Born as a reaction against the softness of Art Nouveau, 
+                            this style is characterized by the combination of straight lines, sharp geometric shapes, and the use of high-quality materials 
+                            to create industrial beauty that remains aesthetically pleasing.
+                        </p>
+                        <div class="zigzag-pattern" style="margin: 2rem 0;"></div>
+                        <p style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
+                            The center of Art Deco was <strong style="color: var(--primary-gold);">Paris in the 1920s–1930s</strong>, 
+                            spreading to America and globally, appearing in architecture, interior design, fashion, graphics, and industrial products.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aesthetic Features -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Aesthetic Language</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; color: var(--primary-navy); font-style: italic;">
+                Art Deco can be easily recognized through bold geometric elements, precise balance, and luxurious materials
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- Geometry & Symmetry -->
+                <div class="art-deco-card clickable-card" data-modal="geometric-modal">
+                    <!-- Image: 320x200px - Geometric patterns, zigzag designs -->
+                    <img src="images/geometric-patterns.jpg" alt="Art Deco Geometric Patterns" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1.5rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-navy); font-size: 1.4rem; margin-bottom: 1rem;">Geometry & Symmetry</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Geometric shapes: triangles, zigzags, chevrons</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Trapezoids, fan patterns</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Balanced layouts and symmetrical lines</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Creating harmony and luxury</li>
+                    </ul>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <!-- Materials & Colors -->
+                <div class="art-deco-card clickable-card" data-modal="materials-modal">
+                    <!-- Image: 320x200px - Luxury materials: gold, marble, wood -->
+                    <img src="images/luxury-materials.jpg" alt="Art Deco Luxury Materials" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1.5rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-navy); font-size: 1.4rem; margin-bottom: 1rem;">Luxury Materials & Colors</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Metals: aluminum, chrome, stainless steel</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Marble, ebony wood, shagreen leather</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Contrasting colors: black – gold</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Luxurious glossy effects</li>
+                    </ul>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <!-- International -->
+                <div class="art-deco-card clickable-card" data-modal="global-modal">
+                    <!-- Image: 320x200px - Global Art Deco buildings montage -->
+                    <img src="images/global-art-deco.jpg" alt="Art Deco Around the World" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1.5rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-navy); font-size: 1.4rem; margin-bottom: 1rem;">International & Multicultural</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Global design style</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Architecture, interior design, fashion</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Jewelry, automobiles, posters</li>
+                        <li style="margin: 0.5rem 0; color: var(--primary-dark);">✦ Reflects local characteristics</li>
+                    </ul>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Famous Buildings Section -->
+    <section class="section" style="background: var(--primary-light);">
+        <div class="container">
+            <h2 class="section-title">Famous Art Deco Architecture</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                
+                <div class="art-deco-card clickable-card" data-modal="chrysler-modal">
+                    <!-- Image: 300x400px - Chrysler Building -->
+                    <img src="images/chrysler-building.jpg" alt="Chrysler Building New York" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); margin-bottom: 0.5rem;">Chrysler Building</h3>
+                    <p style="color: var(--primary-navy); font-style: italic; margin-bottom: 1rem;">New York, USA (1930)</p>
+                    <p style="line-height: 1.6;">Art Deco icon with distinctive metallic spire and intricate geometric details.</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="empire-modal">
+                    <!-- Image: 300x400px - Empire State Building -->
+                    <img src="images/empire-state-building.jpg" alt="Empire State Building" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); margin-bottom: 0.5rem;">Empire State Building</h3>
+                    <p style="color: var(--primary-navy); font-style: italic; margin-bottom: 1rem;">New York, USA (1931)</p>
+                    <p style="line-height: 1.6;">Art Deco masterpiece with distinctive stepped design and iconic building crown.</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="miami-modal">
+                    <!-- Image: 300x400px - Miami Beach Art Deco District -->
+                    <img src="images/miami-beach-art-deco.jpg" alt="Miami Beach Art Deco District" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); margin-bottom: 0.5rem;">Miami Art Deco District</h3>
+                    <p style="color: var(--primary-navy); font-style: italic; margin-bottom: 1rem;">Miami Beach, USA (1930s)</p>
+                    <p style="line-height: 1.6;">World's largest Art Deco district with pastel colors and streamline moderne design.</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="section" style="background: var(--gradient-dark); color: var(--primary-light); text-align: center;">
+        <div class="container">
+            <div class="zigzag-pattern" style="margin: 0 auto 3rem; width: 200px;"></div>
+            <blockquote style="font-size: 2rem; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                "Art Deco has enduring vitality not only because of its formal beauty, but also because it represents a strong faith in the future."
+            </blockquote>
+            <cite style="display: block; margin-top: 2rem; font-size: 1.2rem; color: var(--primary-gold);">
+                — V&A Museum
+            </cite>
+            <div class="zigzag-pattern" style="margin: 3rem auto 0; width: 200px;"></div>
+        </div>
+    </section>
+
+    <!-- Modern Applications -->
+    <section class="section" id="applications">
+        <div class="container">
+            <h2 class="section-title">Applications in Many Fields</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                
+                <div class="art-deco-card clickable-card" data-modal="architecture-modal">
+                    <!-- Image: 320x200px - Modern Art Deco architecture -->
+                    <img src="images/modern-architecture.jpg" alt="Modern Art Deco Architecture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Architecture</h3>
+                    <p>Chrysler Building (New York), Radio City Music Hall, Miami Beach hotels with distinctive geometric lines.</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="graphic-modal">
+                    <!-- Image: 320x200px - Art Deco graphic design, posters -->
+                    <img src="images/graphic-design.jpg" alt="Art Deco Graphic Design" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Graphic Design</h3>
+                    <p>Advertising posters, book covers, logo designs with elegant serif fonts and geometric decorations.</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="fashion-modal">
+                    <!-- Image: 320x200px - Art Deco fashion and furniture -->
+                    <img src="images/fashion-furniture.jpg" alt="Art Deco Fashion and Furniture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Fashion & Furniture</h3>
+                    <p>Flapper dresses, geometric jewelry, chairs and tables with metal trim and glass surfaces.</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal System -->
+    <!-- Paris 1920-1930 Modal -->
+    <div id="paris-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Paris 1920-1930: The Origin of Art Deco</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/paris-1920s.jpg" alt="Paris Art Deco Era" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>The Golden Age of Art</h3>
+                    <p>Paris in the 1920s-1930s was known as "Les Années Folles" (The Crazy Years) - a period of cultural, artistic and architectural explosion after World War I. This was where the Art Deco style was born and developed most vigorously.</p>
+                    
+                    <h4>Historical Background:</h4>
+                    <p>After World War I, Paris became the center of a cultural revolution. Society yearned for innovation, modernization and forgetting the pain of war. Women gained more freedom, technology developed rapidly, and art needed a new language to express the spirit of the times.</p>
+                    
+                    <h4>Important Events:</h4>
+                    <ul>
+                        <li><strong>1925:</strong> International Exhibition of Modern Decorative and Industrial Arts (Exposition Internationale des Arts Décoratifs et Industriels Modernes) - the event that named the "Art Deco" style</li>
+                        <li><strong>1924-1930:</strong> Construction of numerous villas, hotels and public buildings in the new style</li>
+                        <li><strong>1920s:</strong> Café and nightclub culture flourished, becoming art exchange venues</li>
+                        <li><strong>1928:</strong> Opening of many department stores and art galleries in Art Deco style</li>
+                    </ul>
+                    
+                    <h4>Paris Art Deco Architectural Features:</h4>
+                    <ul>
+                        <li>Building facades with sharp geometric lines, creating light and shadow effects</li>
+                        <li>Use of reinforced concrete combined with exquisite metal decoration</li>
+                        <li>Large rectangular windows with thin metal frames, optimizing natural light</li>
+                        <li>Stylized patterns and geometric motifs inspired by Egyptian and Asian art</li>
+                        <li>Use of strong contrasting colors: gold, black, white, and silver</li>
+                    </ul>
+                    
+                    <h4>Global Influence:</h4>
+                    <p>From Paris, Art Deco style spread worldwide like a cultural wave. New York embraced and developed it into magnificent skyscrapers like the Chrysler Building and Empire State Building. London, Berlin, Buenos Aires, and even Asian cities like Shanghai and Mumbai all have distinctive Art Deco buildings.</p>
+                    
+                    <h4>Cultural Heritage:</h4>
+                    <p>Many Art Deco buildings from this period in Paris are still preserved intact today, becoming invaluable cultural heritage. They are not just buildings but symbols of an era full of creativity and hope.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Geometric Patterns Modal -->
+    <div id="geometric-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Art Deco Geometric Language</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/geometric-patterns.jpg" alt="Art Deco Geometric Patterns" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Geometric Philosophy in Art Deco</h3>
+                    <p>Art Deco places geometry at the center, expressing faith in order, progress and the future. Geometric patterns are not just decoration but also express the spirit of the machine age and industrialization, reflecting humanity's desire for a modern and orderly world.</p>
+                    
+                    <h4>Philosophical Origins:</h4>
+                    <p>After the chaos of World War I, society yearned for stability and order. Geometry brought a sense of safety, predictability and control. At the same time, the development of science and mathematics also strongly influenced design thinking.</p>
+                    
+                    <h4>Basic Geometric Patterns:</h4>
+                    <ul>
+                        <li><strong>Zigzag:</strong> Symbol of energy, movement and breaking tradition, expressing the dynamism of the new era</li>
+                        <li><strong>Chevron:</strong> Stylized arrow shape, expressing progress and upward direction, symbolizing high ambition</li>
+                        <li><strong>Sunburst:</strong> Rays radiating from the center, symbolizing light, hope and new beginnings</li>
+                        <li><strong>Fan patterns:</strong> Inspired by Egyptian and Asian art, expressing sophistication and elegance</li>
+                        <li><strong>Stepped forms:</strong> Like pyramids, expressing solidity and upward direction</li>
+                        <li><strong>Circles and Spirals:</strong> Symbols of perfection and continuous movement</li>
+                    </ul>
+                    
+                    <h4>Applications in Design:</h4>
+                    <ul>
+                        <li><strong>Architecture:</strong> Building facades, entrances, windows, and decorative details</li>
+                        <li><strong>Interior:</strong> Floor tiles, wallpaper, carpets, and furniture</li>
+                        <li><strong>Jewelry:</strong> Brooch pins, necklaces, watches and rings design</li>
+                        <li><strong>Typography:</strong> Fonts and brand logo design</li>
+                        <li><strong>Applied Arts:</strong> Posters, book covers, and advertising</li>
+                    </ul>
+                    
+                    <h4>Color Psychology:</h4>
+                    <p>Art Deco uses strong contrasts: black-white, gold-black, silver-black to create drama and luxury. Gold represents extravagance and power, black represents mystery and sophistication, silver represents technology and modernity.</p>
+                    
+                    <h4>Influence Today:</h4>
+                    <p>Art Deco's geometric language still strongly influences modern design. From luxury brand logos to mobile app design, we still see traces of Art Deco geometric patterns.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Materials Modal -->
+    <div id="materials-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Premium Materials in Art Deco</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/luxury-materials.jpg" alt="Luxury Art Deco Materials" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>The Materials Revolution</h3>
+                    <p>Art Deco marked the transition from traditional natural materials to modern industrial materials, creating a unique machine-age aesthetic beauty. This was the first time in art history that industrial materials were elevated to high art status.</p>
+                    
+                    <h4>New Material Philosophy:</h4>
+                    <p>Art Deco not only used new materials but also celebrated them. Designers believed that beauty could be created from industrial products themselves, without necessarily hiding or concealing them.</p>
+                    
+                    <h4>Modern Metals:</h4>
+                    <ul>
+                        <li><strong>Chrome:</strong> Perfect mirror-like reflective surface, symbol of the future and progress</li>
+                        <li><strong>Stainless Steel:</strong> Durable, shiny, expressing industrial spirit and permanence</li>
+                        <li><strong>Aluminum:</strong> Lightweight, modern metal used in aviation and automotive industries</li>
+                        <li><strong>Brass and Copper:</strong> Warmer than chrome, often used for furniture and lighting fixtures</li>
+                        <li><strong>Silver and Gold:</strong> Precious metals used to create accents and express luxury</li>
+                    </ul>
+                    
+                    <h4>Premium Natural Stone:</h4>
+                    <ul>
+                        <li><strong>Black Marble:</strong> Creates dramatic dark background, reflects light beautifully</li>
+                        <li><strong>Onyx:</strong> Unique translucent structure, creates mysterious lighting effects</li>
+                        <li><strong>Travertine:</strong> Elegant cream color, naturally smooth surface</li>
+                        <li><strong>Granite:</strong> Hard, durable, available in colors from black to pink</li>
+                        <li><strong>Serpentine:</strong> Unique green color with natural cloud patterns</li>
+                    </ul>
+                    
+                    <h4>Rare Materials:</h4>
+                    <ul>
+                        <li><strong>Shagreen (Shark skin):</strong> Unique small-grain texture, symbol of ultimate luxury</li>
+                        <li><strong>Ebony:</strong> Pure black color, extremely rare and expensive</li>
+                        <li><strong>Mother-of-pearl:</strong> Natural color-changing properties, shimmering metallic luster</li>
+                        <li><strong>Tortoiseshell:</strong> Beautiful natural patterns, warm brown-gold color</li>
+                        <li><strong>Ivory:</strong> Pure ivory white, symbol of elegance (now banned)</li>
+                    </ul>
+                    
+                    <h4>Exquisite Processing Techniques:</h4>
+                    <ul>
+                        <li><strong>Mirror polishing:</strong> Creates perfect reflective surfaces</li>
+                        <li><strong>Multi-layer lacquering:</strong> Creates deep gloss and color durability</li>
+                        <li><strong>Inlay:</strong> Combining different materials to create patterns</li>
+                        <li><strong>Etching:</strong> Creating delicate patterns on metal surfaces</li>
+                        <li><strong>Casting and embossing:</strong> Creating three-dimensional forms</li>
+                    </ul>
+                    
+                    <h4>Influence on Modern Design:</h4>
+                    <p>Art Deco's materials revolution paved the way for modern design. Today, we still see this influence in high-end interior design, luxury watches, and modern architecture.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Art Deco Modal -->
+    <div id="global-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Global Art Deco: An International Language</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/global-art-deco.jpg" alt="Global Art Deco Architecture" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Spreading Worldwide</h3>
+                    <p>Art Deco was not just a style of Paris or New York, but became an international design language, adapting to local culture in each country.</p>
+                    
+                    <h4>Europe:</h4>
+                    <ul>
+                        <li><strong>London:</strong> BBC Broadcasting House, Hoover Building</li>
+                        <li><strong>Berlin:</strong> Cinemas and restaurants with Streamline Moderne style</li>
+                        <li><strong>Barcelona:</strong> Combined with Catalan Modernisme</li>
+                        <li><strong>Prague:</strong> Functionalist architecture with Art Deco details</li>
+                    </ul>
+                    
+                    <h4>Americas:</h4>
+                    <ul>
+                        <li><strong>New York:</strong> Chrysler, Empire State - pinnacle of skyscraper design</li>
+                        <li><strong>Miami:</strong> Tropical Deco with pastel colors</li>
+                        <li><strong>Buenos Aires:</strong> Tango culture meets Art Deco</li>
+                        <li><strong>Rio de Janeiro:</strong> Christ the Redeemer statue (1931)</li>
+                    </ul>
+                    
+                    <h4>Asia & Oceania:</h4>
+                    <ul>
+                        <li><strong>Mumbai:</strong> Marine Drive buildings, Cinema architecture</li>
+                        <li><strong>Shanghai:</strong> The Bund - International Settlement buildings</li>
+                        <li><strong>Sydney:</strong> AWA Tower, Grace Building</li>
+                        <li><strong>Tokyo:</strong> Department stores and hotel design</li>
+                    </ul>
+                    
+                    <h4>Africa & Middle East:</h4>
+                    <ul>
+                        <li><strong>Casablanca:</strong> French Colonial Art Deco</li>
+                        <li><strong>Cairo:</strong> Combined with Islamic motifs</li>
+                        <li><strong>Tel Aviv:</strong> White City - Bauhaus meets Art Deco</li>
+                    </ul>
+                    
+                    <h4>Adaptation Characteristics:</h4>
+                    <p>Each region adapted Art Deco to local climate, materials and cultural traditions, creating unique variations while maintaining the core spirit of the style.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chrysler Building Modal -->
+    <div id="chrysler-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Chrysler Building: Art Deco Icon</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/chrysler-building.jpg" alt="Chrysler Building Details" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Masterpiece by William Van Alen</h3>
+                    <p>Chrysler Building (1928-1930) is considered the pinnacle of Art Deco architecture, perfectly combining function and ornamentation, modern technology and decorative arts.</p>
+                    
+                    <h4>Technical Specifications:</h4>
+                    <ul>
+                        <li><strong>Height:</strong> 319m (77 floors)</li>
+                        <li><strong>Construction time:</strong> 1928-1930</li>
+                        <li><strong>Architect:</strong> William Van Alen</li>
+                        <li><strong>Developer:</strong> Walter Chrysler (Chrysler Corporation)</li>
+                    </ul>
+                    
+                    <h4>Iconic Design Features:</h4>
+                    <ul>
+                        <li><strong>Crown/Spire:</strong> 7 floors of metallic arches with silver finish</li>
+                        <li><strong>Eagle gargoyles:</strong> Eagle sculptures on 61st floor</li>
+                        <li><strong>Metalwork:</strong> Stainless steel with chrome-nickel alloy</li>
+                        <li><strong>Setbacks:</strong> Stepped silhouette following New York zoning laws</li>
+                    </ul>
+                    
+                    <h4>Automotive Motifs:</h4>
+                    <ul>
+                        <li>Hub caps and wheel decorations from Chrysler cars</li>
+                        <li>Radiator grille patterns in lobby design</li>
+                        <li>Speed lines and streamlined forms</li>
+                        <li>Chrome finish expressing machine age aesthetic</li>
+                    </ul>
+                    
+                    <h4>Lobby Interior:</h4>
+                    <p>The lobby interior is a museum piece with African marble, onyx, amber and chrome details. Mural ceiling depicts industrial scenes and transportation themes.</p>
+                    
+                    <h4>Legacy:</h4>
+                    <p>Chrysler Building became a template for Art Deco skyscrapers worldwide, influencing architecture from Mumbai to Buenos Aires.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empire State Building Modal -->
+    <div id="empire-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Empire State Building: Art Deco Wonder</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/empire-state-building.jpg" alt="Empire State Building" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Symbol of the American Dream</h3>
+                    <p>Empire State Building (1930-1931) is the embodiment of American optimism and Art Deco grandeur, built during the Great Depression but still expressing faith in the future.</p>
+                    
+                    <h4>Construction Records:</h4>
+                    <ul>
+                        <li><strong>Construction time:</strong> Only 410 days</li>
+                        <li><strong>Speed:</strong> 14 floors/week</li>
+                        <li><strong>Workers:</strong> 3,500 people (mostly Mohawk natives)</li>
+                        <li><strong>Cost:</strong> $40.9 million (1931)</li>
+                    </ul>
+                    
+                    <h4>Art Deco Design:</h4>
+                    <ul>
+                        <li><strong>Stepped silhouette:</strong> Gradually tapering pyramid form</li>
+                        <li><strong>Limestone facade:</strong> Indiana limestone with metal details</li>
+                        <li><strong>Entrance lobby:</strong> Marble from 4 different countries</li>
+                        <li><strong>Ceiling mural:</strong> Planets and stars in gold leaf</li>
+                    </ul>
+                    
+                    <h4>Iconic Features:</h4>
+                    <ul>
+                        <li><strong>Observation Deck:</strong> 86th and 102nd floors</li>
+                        <li><strong>Lighting system:</strong> LED since 2012, 16 million colors</li>
+                        <li><strong>Spire:</strong> Mooring mast for airships (never used)</li>
+                        <li><strong>King Kong:</strong> Immortalized in 1933 film</li>
+                    </ul>
+                    
+                    <h4>Modern Sustainability:</h4>
+                    <p>2019 renovation achieved LEED Gold certification, combining preservation with green technology - proof that Art Deco can adapt to environmental consciousness.</p>
+                    
+                    <h4>Cultural Impact:</h4>
+                    <p>Not just an architectural marvel, Empire State Building has become a symbol of perseverance, ambition and the American dream.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Miami Beach Art Deco Modal -->
+    <div id="miami-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Miami Beach: Tropical Deco Paradise</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/miami-beach-art-deco.jpg" alt="Miami Beach Art Deco District" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>World's Largest Art Deco District</h3>
+                    <p>South Beach Miami (1930s-1940s) created a unique interpretation of Art Deco, adapting to tropical climate and beach culture, creating the "Tropical Deco" style.</p>
+                    
+                    <h4>Tropical Deco Characteristics:</h4>
+                    <ul>
+                        <li><strong>Pastel colors:</strong> Pink, mint green, lavender, coral</li>
+                        <li><strong>Horizontal lines:</strong> Streamline Moderne influence</li>
+                        <li><strong>Nautical motifs:</strong> Portholes, waves, maritime themes</li>
+                        <li><strong>Neon lighting:</strong> Dramatic nighttime illumination</li>
+                    </ul>
+                    
+                    <h4>Special Architecture:</h4>
+                    <ul>
+                        <li><strong>Flat roofs:</strong> Suitable for Florida climate</li>
+                        <li><strong>Glass blocks:</strong> Allow natural light while maintaining privacy</li>
+                        <li><strong>Curved corners:</strong> Soft modernism</li>
+                        <li><strong>Terrazzo floors:</strong> Decorative concrete with patterns</li>
+                    </ul>
+                    
+                    <h4>Iconic Buildings:</h4>
+                    <ul>
+                        <li><strong>The Carlyle:</strong> Featured in "The Birdcage" movie</li>
+                        <li><strong>The Colony Hotel:</strong> Neon sign landmark</li>
+                        <li><strong>The Delano:</strong> Philippe Starck renovation</li>
+                        <li><strong>Essex House:</strong> Perfect preservation example</li>
+                    </ul>
+                    
+                    <h4>Preservation Effort:</h4>
+                    <p>1970s-80s: Barbara Baer Capitman led the movement to save the Art Deco District from demolition. 1979: Listed in National Register of Historic Places.</p>
+                    
+                    <h4>Modern Revival:</h4>
+                    <p>1980s-90s: "Miami Vice" TV show created global awareness. Renovation and adaptive reuse transformed this area into a luxury destination with hotels, restaurants, and nightlife.</p>
+                    
+                    <h4>Festival & Culture:</h4>
+                    <p>Art Deco Weekend (annually): Celebration with vintage fashion, classic cars, architecture tours, and live music.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Architecture Applications Modal -->
+    <div id="architecture-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Art Deco in Modern Architecture</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/modern-architecture.jpg" alt="Modern Art Deco Architecture" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Art Deco Renaissance</h3>
+                    <p>The 21st century has witnessed a strong revival of Art Deco in architecture, from luxury hotels to residential developments, office buildings to cultural venues.</p>
+                    
+                    <h4>Contemporary Interpretations:</h4>
+                    <ul>
+                        <li><strong>Neo-Art Deco:</strong> Maintaining principles but using modern materials</li>
+                        <li><strong>Minimalist Deco:</strong> Simplified forms, clean geometry</li>
+                        <li><strong>Sustainable Deco:</strong> Green building techniques with Art Deco aesthetics</li>
+                        <li><strong>Digital Deco:</strong> LED integration, smart building features</li>
+                    </ul>
+                    
+                    <h4>Luxury Hotels & Resorts:</h4>
+                    <ul>
+                        <li><strong>The St. Regis New York:</strong> Lobby renovation with Art Deco details</li>
+                        <li><strong>Ritz-Carlton Dubai:</strong> Middle Eastern interpretation</li>
+                        <li><strong>Four Seasons Shanghai:</strong> Oriental Art Deco fusion</li>
+                        <li><strong>The Ned London:</strong> Banking hall transformed</li>
+                    </ul>
+                    
+                    <h4>Residential Projects:</h4>
+                    <ul>
+                        <li><strong>15 Central Park West NYC:</strong> Robert A.M. Stern design</li>
+                        <li><strong>One57 Manhattan:</strong> Extell Development</li>
+                        <li><strong>Chelsea Barracks London:</strong> Luxury development</li>
+                        <li><strong>Marina Bay Singapore:</strong> Integrated resort</li>
+                    </ul>
+                    
+                    <h4>Cultural & Commercial:</h4>
+                    <ul>
+                        <li><strong>Museum of Arts and Design NYC:</strong> Brad Cloepfil renovation</li>
+                        <li><strong>Apple Stores:</strong> Clean geometry inspired by Deco</li>
+                        <li><strong>Luxury retail:</strong> Bulgari, Cartier flagships</li>
+                        <li><strong>Casino design:</strong> Las Vegas, Macau developments</li>
+                    </ul>
+                    
+                    <h4>Why Art Deco Today?</h4>
+                    <ul>
+                        <li><strong>Timeless elegance:</strong> Never goes out of style</li>
+                        <li><strong>Flexibility:</strong> Adapts to any building type</li>
+                        <li><strong>Luxury association:</strong> Suggests quality and craftsmanship</li>
+                        <li><strong>Instagram-ready:</strong> Photogenic architecture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Graphic Design Modal -->
+    <div id="graphic-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Art Deco Graphic Design: Typography & Visual Identity</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/graphic-design.jpg" alt="Art Deco Graphic Design" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Visual Language of the Machine Age</h3>
+                    <p>Art Deco graphic design revolutionized how the world perceived typography, advertising, and visual communication, creating standards for modern design.</p>
+                    
+                    <h4>Typography Characteristics:</h4>
+                    <ul>
+                        <li><strong>Geometric sans-serif:</strong> Clean, bold letterforms</li>
+                        <li><strong>Condensed fonts:</strong> Tall, narrow proportions</li>
+                        <li><strong>Inline details:</strong> Decorative lines within letters</li>
+                        <li><strong>Shadow effects:</strong> 3D depth and dimension</li>
+                    </ul>
+                    
+                    <h4>Famous Art Deco Fonts:</h4>
+                    <ul>
+                        <li><strong>Broadway:</strong> Morris Fuller Benton (1927)</li>
+                        <li><strong>Bifur:</strong> A.M. Cassandre (1929)</li>
+                        <li><strong>Metropolis:</strong> William A. Dwiggins (1929)</li>
+                        <li><strong>Kabel:</strong> Rudolf Koch (1927)</li>
+                    </ul>
+                    
+                    <h4>Poster Design Principles:</h4>
+                    <ul>
+                        <li><strong>Bold imagery:</strong> Simplified, iconic representations</li>
+                        <li><strong>Limited color palette:</strong> High contrast for impact</li>
+                        <li><strong>Geometric composition:</strong> Mathematical precision</li>
+                        <li><strong>Streamlined forms:</strong> Speed and modernity</li>
+                    </ul>
+                    
+                    <h4>Modern Applications:</h4>
+                    <ul>
+                        <li><strong>Logo design:</strong> Luxury brands, hotels, fashion</li>
+                        <li><strong>Movie posters:</strong> "The Great Gatsby," "Blade Runner"</li>
+                        <li><strong>Video games:</strong> "BioShock," retro-futuristic aesthetics</li>
+                        <li><strong>Web design:</strong> CSS3 effects, responsive layouts</li>
+                    </ul>
+                    
+                    <h4>Masters of Art Deco Graphics:</h4>
+                    <ul>
+                        <li><strong>A.M. Cassandre:</strong> Transportation posters</li>
+                        <li><strong>Edward McKnight Kauffer:</strong> London Underground</li>
+                        <li><strong>Jean Carlu:</strong> Corporate identity pioneer</li>
+                        <li><strong>Paul Colin:</strong> Theater and cabaret posters</li>
+                    </ul>
+                    
+                    <h4>Digital Age Revival:</h4>
+                    <p>Social media, particularly Instagram and Pinterest, have created renewed interest in Art Deco graphics. Modern designers use digital tools to recreate textures, gradients, and effects from the 1920s-30s.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fashion & Furniture Modal -->
+    <div id="fashion-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Art Deco Fashion & Furniture: Lifestyle Revolution</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/fashion-furniture.jpg" alt="Art Deco Fashion and Furniture" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Lifestyle Revolution</h3>
+                    <p>Art Deco not only changed architecture but also completely transformed lifestyle, from clothing to home decoration, reflecting new freedoms and attitudes of modern women.</p>
+                    
+                    <h4>Fashion Revolution:</h4>
+                    <ul>
+                        <li><strong>Flapper dresses:</strong> Straight silhouettes, dropped waistlines</li>
+                        <li><strong>Beaded embellishments:</strong> Geometric patterns with sequins</li>
+                        <li><strong>Accessories:</strong> Long pearl necklaces, headbands, T-bar shoes</li>
+                        <li><strong>Makeup:</strong> Kohl-rimmed eyes, dark lips, pale powder</li>
+                    </ul>
+                    
+                    <h4>Iconic Fashion Designers:</h4>
+                    <ul>
+                        <li><strong>Coco Chanel:</strong> Simplified elegance, jersey fabric</li>
+                        <li><strong>Paul Poiret:</strong> Exotic influences, draped silhouettes</li>
+                        <li><strong>Madeleine Vionnet:</strong> Bias cut technique</li>
+                        <li><strong>Jeanne Lanvin:</strong> Mother-daughter collections</li>
+                    </ul>
+                    
+                    <h4>Furniture & Interior Design:</h4>
+                    <ul>
+                        <li><strong>Streamlined forms:</strong> Curved edges, aerodynamic shapes</li>
+                        <li><strong>Luxury materials:</strong> Exotic woods, chrome, glass</li>
+                        <li><strong>Built-in furniture:</strong> Space-saving, geometric design</li>
+                        <li><strong>Cocktail culture:</strong> Bar carts, specialized glassware</li>
+                    </ul>
+                    
+                    <h4>Famous Furniture Designers:</h4>
+                    <ul>
+                        <li><strong>Émile-Jacques Ruhlmann:</strong> French luxury furniture</li>
+                        <li><strong>Donald Deskey:</strong> Radio City Music Hall interiors</li>
+                        <li><strong>Gilbert Rohde:</strong> Mass-produced modernist pieces</li>
+                        <li><strong>Warren McArthur:</strong> Aluminum furniture pioneer</li>
+                    </ul>
+                    
+                    <h4>Jewelry & Accessories:</h4>
+                    <ul>
+                        <li><strong>Cartier:</strong> Geometric brooches, watches</li>
+                        <li><strong>Van Cleef & Arpels:</strong> Egyptian revival pieces</li>
+                        <li><strong>Boucheron:</strong> Art Deco tiaras and necklaces</li>
+                        <li><strong>Lalique:</strong> Glass jewelry and perfume bottles</li>
+                    </ul>
+                    
+                    <h4>Modern Revival:</h4>
+                    <p>Contemporary fashion shows frequently feature Art Deco influences: geometric prints, metallic fabrics, structured silhouettes. High-end furniture makers continue producing Art Deco-inspired pieces for luxury homes and hotels.</p>
+                    
+                    <h4>Cultural Impact:</h4>
+                    <p>Art Deco fashion represented women's liberation - shorter skirts, bobbed hair, smoking, drinking. It was visual manifestation of the social revolution happening in the 1920s.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-dark); color: var(--primary-light); padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <div class="zigzag-pattern" style="margin: 0 auto 2rem; width: 300px;"></div>
+            <h3 style="color: var(--primary-gold); margin-bottom: 1rem;">ART DECO</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                This style not only shapes the visual – but also reminds us of an era when people reached the pinnacle of the art of living.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+                <a href="artists.html" class="nav-link">Artists</a>
+                <a href="designers.html" class="nav-link">Designers</a>
+                <a href="news.html" class="nav-link">News</a>
+            </div>
+            <div class="zigzag-pattern" style="margin: 2rem auto 0; width: 300px;"></div>
+        </div>
+    </footer>
+
+    <script>
+        // Art Deco Performance & Effects Manager
+        class ArtDecoEffects {
+            constructor() {
+                this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                this.particles = [];
+                this.init();
+            }
+
+            init() {
+                this.handleLoading();
+                if (!this.isReducedMotion) {
+                    this.initParticles();
+                    this.initParallax();
+                    this.initScrollReveal();
+                    this.initTypewriter();
+                }
+                this.initLazyLoading();
+            }
+
+            handleLoading() {
+                const loader = document.getElementById('art-deco-loader');
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 500);
+                    }, 1000);
+                });
+            }
+
+            initParticles() {
+                const particleContainer = document.getElementById('art-deco-particles');
+                const particleCount = Math.min(window.innerWidth / 50, 15); // Responsive particle count
+
+                for (let i = 0; i < particleCount; i++) {
+                    this.createParticle(particleContainer);
+                }
+
+                // Create new particles periodically
+                setInterval(() => {
+                    if (this.particles.length < particleCount) {
+                        this.createParticle(particleContainer);
+                    }
+                }, 2000);
+            }
+
+            createParticle(container) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 4 + 2;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 8;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = left + '%';
+                particle.style.animationDelay = delay + 's';
+                
+                container.appendChild(particle);
+                this.particles.push(particle);
+
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                        this.particles = this.particles.filter(p => p !== particle);
+                    }
+                }, 8000 + delay * 1000);
+            }
+
+            initParallax() {
+                const parallaxElements = document.querySelectorAll('.parallax-slow');
+                
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.5;
+                    
+                    parallaxElements.forEach(element => {
+                        if (element.getBoundingClientRect().top < window.innerHeight) {
+                            element.style.transform = `translateY(${rate}px)`;
+                        }
+                    });
+                });
+            }
+
+            initScrollReveal() {
+                const revealElements = document.querySelectorAll('.reveal-element');
+                
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                revealElements.forEach(element => {
+                    revealObserver.observe(element);
+                });
+            }
+
+            initTypewriter() {
+                const heroTitle = document.querySelector('.hero-title');
+                if (heroTitle) {
+                    heroTitle.classList.add('typewriter');
+                }
+            }
+
+            initLazyLoading() {
+                const images = document.querySelectorAll('img[loading="lazy"]');
+                
+                if ('IntersectionObserver' in window) {
+                    const imageObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.style.transition = 'opacity 0.3s ease';
+                                img.style.opacity = '0';
+                                
+                                img.onload = () => {
+                                    img.style.opacity = '1';
+                                };
+                                
+                                imageObserver.unobserve(img);
+                            }
+                        });
+                    });
+
+                    images.forEach(img => imageObserver.observe(img));
+                }
+            }
+        }
+
+        // Initialize Art Deco Effects
+        document.addEventListener('DOMContentLoaded', () => {
+            window.artDecoEffectsInstance = new ArtDecoEffects();
+        });
+
+        // Fix button "Khám phá ngay" - scroll to history section
+        function scrollToHistory() {
+            const historySection = document.getElementById('history');
+            historySection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Smooth scrolling cho navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.art-deco-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Stagger animation
+        document.querySelectorAll('.art-deco-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Enhanced button hover effects
+        document.querySelectorAll('.btn-art-deco').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+                this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            });
+        });
+
+        // Detail Modal System
+        function openDetailModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                // Add entrance animation
+                const modalContent = modal.querySelector('.detail-modal-content');
+                modalContent.style.animation = 'slideInScale 0.5s ease-out';
+            }
+        }
+
+        function closeDetailModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                const modalContent = modal.querySelector('.detail-modal-content');
+                modalContent.style.animation = 'fadeOut 0.3s ease-out';
+                
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+        }
+
+        function closeAllDetailModals() {
+            document.querySelectorAll('.detail-modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        // Click handlers for clickable cards
+        document.querySelectorAll('.clickable-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modalId = this.getAttribute('data-modal');
+                if (modalId) {
+                    openDetailModal(modalId);
+                }
+            });
+        });
+
+        // Close button handlers
+        document.querySelectorAll('.detail-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                const modal = this.closest('.detail-modal');
+                if (modal) {
+                    closeDetailModal(modal.id);
+                }
+            });
+        });
+
+        // Click outside to close
+        document.querySelectorAll('.detail-modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeDetailModal(this.id);
+                }
+            });
+        });
+
+        // ESC key to close all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllDetailModals();
+            }
+        });
+
+        // Prevent modal content scroll from closing modal
+        document.querySelectorAll('.detail-modal-content').forEach(content => {
+            content.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        // Add fadeOut animation keyframe
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html> 

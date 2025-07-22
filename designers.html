@@ -1,0 +1,2999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Deco Designers - Masters of Craftsmanship</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="art-deco-design-system.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="images/design-studio-hero.jpg" as="image">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="art-deco-design-system.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical CSS for Above-the-fold -->
+    <style>
+        /* Critical CSS - inline for faster loading */
+        .hero-section { min-height: 65vh; position: relative; }
+        .hero-image-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .hero-image { width: 100%; height: 100%; object-fit: cover; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 5rem 0; }
+        .hero-title { font-size: 4rem; font-weight: 700; color: var(--primary-gold); margin-bottom: 2rem; }
+        .navbar { background: var(--primary-dark); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+        .art-deco-card { background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        
+        /* Art Deco Loading Animation */
+        .art-deco-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .art-deco-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-container {
+            text-align: center;
+            color: var(--primary-gold);
+        }
+
+        .loader-diamond {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--primary-gold);
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            animation: diamondRotate 2s linear infinite;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .loader-diamond::before,
+        .loader-diamond::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+        }
+
+        .loader-diamond::before {
+            border-left: 4px solid var(--primary-gold);
+            border-right: 4px solid var(--primary-gold);
+            animation: diamondRotate 1.5s linear infinite reverse;
+        }
+
+        .loader-diamond::after {
+            border-top: 4px solid var(--primary-gold);
+            border-bottom: 4px solid var(--primary-gold);
+            animation: diamondRotate 1s linear infinite;
+        }
+
+        @keyframes diamondRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-zigzag {
+            width: 200px;
+            height: 20px;
+            background: linear-gradient(45deg, transparent 30%, var(--primary-gold) 30%, var(--primary-gold) 70%, transparent 70%),
+                        linear-gradient(-45deg, transparent 30%, var(--primary-gold) 30%, var(--primary-gold) 70%, transparent 70%);
+            background-size: 30px 20px;
+            animation: zigzagMove 2s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes zigzagMove {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 30px 0, -30px 0; }
+        }
+
+        .loader-sunburst {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 2rem auto;
+            animation: sunburstRotate 3s linear infinite;
+        }
+
+        .loader-sunburst::before,
+        .loader-sunburst::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 40px;
+            background: var(--primary-gold);
+            transform-origin: 2px 2px;
+        }
+
+        .loader-sunburst::before {
+            transform: translate(-50%, -50%) rotate(0deg);
+            box-shadow: 0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold);
+        }
+
+        .loader-sunburst::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+            box-shadow: 0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold),
+                        0 0 0 0 var(--primary-gold);
+        }
+
+        @keyframes sunburstRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            animation: textPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Particle System */
+        .art-deco-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat 8s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-gold);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.1em;
+            animation: typewriter 4s steps(18) 1s both, blink 0.7s infinite;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-gold); }
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax Effects */
+        .parallax-slow {
+            will-change: transform;
+        }
+
+        /* Enhanced Hover Effects */
+        .clickable-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .clickable-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .click-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.9), rgba(139, 69, 19, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .clickable-card:hover .click-overlay {
+            opacity: 1;
+        }
+
+        .click-hint {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Golden Sweep Effect */
+        .golden-sweep {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .golden-sweep::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .golden-sweep:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-content { padding: 3rem 0; }
+            .loader-diamond { width: 60px; height: 60px; }
+            .loader-zigzag { width: 150px; }
+            .loader-sunburst { width: 80px; height: 80px; }
+        }
+
+        /* Performance optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            .particle,
+            .typewriter,
+            .reveal-element,
+            .art-deco-card,
+            .golden-sweep::before,
+            .click-overlay {
+                animation: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Art Deco Loading Animation -->
+    <div id="art-deco-loader" class="art-deco-loader">
+        <div class="loader-container">
+            <div class="loader-diamond"></div>
+            <div class="loader-zigzag"></div>
+            <div class="loader-sunburst"></div>
+            <div class="loader-text">ART DECO DESIGNERS</div>
+        </div>
+    </div>
+
+    <!-- Particle System -->
+    <div id="art-deco-particles" class="art-deco-particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="artists.html" class="nav-link">Artists</a>
+                <a href="designers.html" class="nav-link active">Designers</a>
+                <a href="news.html" class="nav-link">News</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="min-height: 65vh;">
+        <!-- Hero Image Container -->
+        <div class="hero-image-container">
+            <img src="images/design-studio-hero.jpg" alt="Design Studio" class="hero-image parallax-slow" style="opacity: 0.7; object-position: center; display: block;" loading="eager">
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title typewriter">ART DECO DESIGNERS</h1>
+                <p style="font-size: 1.5rem; margin: 2rem 0; color: var(--primary-light); font-style: italic;">
+                    Masters combining classical beauty with modern technology
+                </p>
+                <div class="zigzag-pattern parallax-slow" style="margin: 3rem auto; width: 300px;"></div>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: var(--primary-light);">
+                    Discover the great designers who shaped Art Deco style through interiors, architecture and exquisite craftsmanship
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Designers Overview -->
+    <section class="section reveal-element">
+        <div class="container">
+            <h2 class="section-title">Art Deco Design Masters</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="ruhlmann-modal">
+                    <!-- Image: 300x300px - Ruhlmann portrait or furniture -->
+                    <img src="images/ruhlmann-portrait.jpg" alt="Émile-Jacques Ruhlmann" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 0.5rem;">Émile-Jacques Ruhlmann</h3>
+                    <p style="text-align: center; color: var(--primary-navy); font-style: italic; margin-bottom: 1rem;">1879-1933 | France</p>
+                    <p style="text-align: center; line-height: 1.6;">Art Deco interior master, exquisite in combining precious wood and metal</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="chareau-modal">
+                    <!-- Image: 300x300px - Pierre Chareau or Maison de Verre -->
+                    <img src="images/chareau-portrait.jpg" alt="Pierre Chareau" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 0.5rem;">Pierre Chareau</h3>
+                    <p style="text-align: center; color: var(--primary-navy); font-style: italic; margin-bottom: 1rem;">1883-1950 | France</p>
+                    <p style="text-align: center; line-height: 1.6;">Pioneer architect in using industrial materials</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card golden-sweep" data-modal="dunand-modal">
+                    <!-- Image: 300x300px - Jean Dunand or lacquer work -->
+                    <img src="images/dunand-portrait.jpg" alt="Jean Dunand" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 0.5rem;">Jean Dunand</h3>
+                    <p style="text-align: center; color: var(--primary-navy); font-style: italic; margin-bottom: 1rem;">1877-1942 | Switzerland-France</p>
+                    <p style="text-align: center; line-height: 1.6;">Master lacquerer, bringing Asian techniques to Art Deco</p>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Émile-Jacques Ruhlmann - Feature Section -->
+    <section class="section" style="background: var(--primary-light);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <div class="art-deco-card clickable-card" data-modal="ruhlmann-workshop-modal">
+                    <!-- Image: 500x600px - Ruhlmann with his furniture -->
+                    <img src="images/ruhlmann-workshop.jpg" alt="Ruhlmann in his workshop" style="width: 100%; height: 500px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <div style="text-align: center; padding: 1rem; background: var(--gradient-dark); color: var(--primary-light);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">ÉMILE-JACQUES RUHLMANN</h3>
+                        <p style="font-style: italic;">"Art Deco Interior Master"</p>
+                    </div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 style="color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 1rem;">Émile-Jacques Ruhlmann</h2>
+                    <div class="zigzag-pattern" style="width: 150px; margin-bottom: 2rem;"></div>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        <strong>Art Deco interior master</strong>, who combined classical beauty with modern technology. 
+                        His products are exquisite, luxurious, using precious wood and metal with perfect craftsmanship 
+                        down to the smallest detail.
+                    </p>
+                    <div class="art-deco-card" style="background: rgba(212, 175, 55, 0.1);">
+                        <h4 style="color: var(--primary-burgundy); margin-bottom: 1rem;">Design Philosophy:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin: 0.5rem 0;">✦ Using rare precious wood and premium metals</li>
+                            <li style="margin: 0.5rem 0;">✦ Exquisite craftsmanship, perfect in detail</li>
+                            <li style="margin: 0.5rem 0;">✦ Simple but absolutely luxurious design</li>
+                            <li style="margin: 0.5rem 0;">✦ Harmonious combination of tradition and modernity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ruhlmann's furniture -->
+            <div class="art-deco-card" style="background: var(--gradient-gold); color: var(--primary-dark);">
+                <h3 style="color: var(--primary-burgundy); text-align: center; margin-bottom: 2rem; font-size: 2rem;">Interior Masterpieces</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                    <div class="clickable-card" data-modal="ruhlmann-table-modal" style="text-align: center; position: relative;">
+                        <!-- Image: 350x400px - Ruhlmann Corner table -->
+                        <img src="images/ruhlmann-corner-table.jpg" alt="Ruhlmann Corner Table" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary-burgundy); cursor: pointer;">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Corner Table</h4>
+                        <p style="font-size: 1.1rem;">Simple design with ebony wood and exquisite silver decoration, expressing absolute elegance</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div class="clickable-card" data-modal="ruhlmann-cabinet-modal" style="text-align: center; position: relative;">
+                        <!-- Image: 350x400px - Ruhlmann Amboyna cabinet -->
+                        <img src="images/ruhlmann-cabinet.jpg" alt="Ruhlmann Amboyna Cabinet" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary-burgundy); cursor: pointer;">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Amboyna Cabinet</h4>
+                        <p style="font-size: 1.1rem;">Rare amboyna wood with exquisite metal details, the most expensive of its era</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div class="clickable-card" data-modal="ruhlmann-chair-modal" style="text-align: center; position: relative;">
+                        <!-- Image: 350x400px - Ruhlmann Bergère chair -->
+                        <img src="images/ruhlmann-chair.jpg" alt="Ruhlmann Bergère Chair" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--primary-burgundy); cursor: pointer;">
+                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">Bergère Chair</h4>
+                        <p style="font-size: 1.1rem;">High-quality leather upholstery combined with elegant wood frame, luxury standard</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pierre Chareau Section -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <div>
+                    <h2 style="color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 1rem;">Pierre Chareau</h2>
+                    <div class="zigzag-pattern" style="width: 150px; margin-bottom: 2rem;"></div>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        <strong>Architect and interior designer</strong> pioneer in using industrial materials 
+                        like steel and glass in interior design. He is famous for "Maison de Verre" (Glass House) 
+                        in Paris - an Art Deco architectural masterpiece combining natural light and modern materials.
+                    </p>
+                    <div class="art-deco-card" style="background: rgba(28, 63, 96, 0.1);">
+                        <h4 style="color: var(--primary-burgundy); margin-bottom: 1rem;">Creative Characteristics:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin: 0.5rem 0;">✦ Using industrial materials: steel, glass, metal</li>
+                            <li style="margin: 0.5rem 0;">✦ Multifunctional design, space optimization</li>
+                            <li style="margin: 0.5rem 0;">✦ Maximizing natural light</li>
+                            <li style="margin: 0.5rem 0;">✦ Combining art and functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="art-deco-card clickable-card" data-modal="maison-verre-modal">
+                    <!-- Image: 400x400px - Maison de Verre or Chareau design -->
+                    <img src="images/maison-de-verre.jpg" alt="Maison de Verre by Pierre Chareau" style="width: 100%; height: 400px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <div style="text-align: center; padding: 1rem; background: linear-gradient(45deg, var(--primary-navy), var(--primary-gold)); color: var(--primary-light);">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">PIERRE CHAREAU</h3>
+                        <p style="font-style: italic;">"Maison de Verre"</p>
+                    </div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chareau's Innovations -->
+            <div class="art-deco-card" style="background: var(--primary-navy); color: var(--primary-light);">
+                <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 2rem; font-size: 2rem;">Design Breakthroughs</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="text-align: center;" class="clickable-card" data-modal="glass-block-modal">
+                        <!-- Image: 300x250px - Glass block walls -->
+                        <img src="images/glass-block-wall.jpg" alt="Glass Block Architecture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold);">Glass Block Walls</h4>
+                        <p>Using glass blocks to create soft light, both private and airy</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center;" class="clickable-card" data-modal="steel-furniture-modal">
+                        <!-- Image: 300x250px - Steel frame furniture -->
+                        <img src="images/steel-furniture.jpg" alt="Steel Frame Furniture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold);">Steel Furniture</h4>
+                        <p>Steel frame combined with leather and fabric, creating durability and modernity</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center;" class="clickable-card" data-modal="mobile-partitions-modal">
+                        <!-- Image: 300x250px - Mobile partitions -->
+                        <img src="images/mobile-partitions.jpg" alt="Mobile Partitions" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold);">Mobile Partitions</h4>
+                        <p>Flexible space solutions, adapting to usage needs</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jean Dunand Section -->
+    <section class="section" style="background: var(--primary-light);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <div class="art-deco-card clickable-card" data-modal="dunand-lacquer-modal">
+                    <!-- Image: 400x500px - Jean Dunand with lacquer work -->
+                    <img src="images/dunand-lacquer-work.jpg" alt="Jean Dunand Lacquer Work" style="width: 100%; height: 500px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <div style="text-align: center; padding: 1rem; background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-bronze) 100%); color: var(--primary-light);">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">JEAN DUNAND</h3>
+                        <p style="font-style: italic;">"Master Lacquerer"</p>
+                    </div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 style="color: var(--primary-gold); font-size: 2.5rem; margin-bottom: 1rem;">Jean Dunand</h2>
+                    <div class="zigzag-pattern" style="width: 150px; margin-bottom: 2rem;"></div>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        <strong>Master lacquer craftsman</strong>, who brought Asian lacquer techniques into Art Deco design. 
+                        He created interior works with characteristic glossy lacquer surfaces, 
+                        perfectly combining traditional Eastern handicrafts with modern Western aesthetics.
+                    </p>
+                    <div class="art-deco-card" style="background: rgba(132, 28, 38, 0.1);">
+                        <h4 style="color: var(--primary-burgundy); margin-bottom: 1rem;">Technical Expertise:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin: 0.5rem 0;">✦ Traditional Asian lacquer techniques</li>
+                            <li style="margin: 0.5rem 0;">✦ Metal and brass decoration</li>
+                            <li style="margin: 0.5rem 0;">✦ High-end interior decorative objects</li>
+                            <li style="margin: 0.5rem 0;">✦ Eastern patterns combined with Art Deco</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dunand's Techniques -->
+            <div class="art-deco-card" style="background: var(--gradient-dark); color: var(--primary-light);">
+                <h3 style="color: var(--primary-gold); text-align: center; margin-bottom: 2rem; font-size: 2rem;">Lacquer Art</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="text-align: center;" class="clickable-card" data-modal="lacquer-panels-modal">
+                        <!-- Image: 300x300px - Lacquer panels -->
+                        <img src="images/lacquer-panels.jpg" alt="Dunand Lacquer Panels" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold);">Lacquer Panels</h4>
+                        <p>Decorative panels with Asian patterns stylized in Art Deco style</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center;" class="clickable-card" data-modal="lacquer-furniture-modal">
+                        <!-- Image: 300x300px - Lacquer furniture -->
+                        <img src="images/lacquer-furniture.jpg" alt="Lacquer Furniture" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold);">Lacquer Furniture</h4>
+                        <p>Tables and chairs with glossy lacquer surfaces, creating beautiful reflective effects</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center;" class="clickable-card" data-modal="lacquer-objects-modal">
+                        <!-- Image: 300x300px - Decorative objects -->
+                        <img src="images/lacquer-objects.jpg" alt="Lacquer Decorative Objects" style="width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold);">Decorative Objects</h4>
+                        <p>Vases, jewelry boxes with exquisite lacquer technique</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials & Techniques Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Art Deco Techniques & Materials</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; color: var(--primary-navy); font-style: italic;">
+                Art Deco designers revolutionized the use of materials and crafting techniques
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                
+                <div class="art-deco-card clickable-card" data-modal="exotic-woods-modal">
+                    <!-- Image: 280x200px - Exotic woods -->
+                    <img src="images/exotic-woods.jpg" alt="Exotic Woods" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Exotic Woods</h3>
+                    <p style="line-height: 1.7; margin-bottom: 1rem;">
+                        Ebony, amboyna wood, palisander with beautiful natural grain and high durability.
+                    </p>
+                    <div style="height: 4px; background: var(--gradient-gold);"></div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="metal-work-modal">
+                    <!-- Image: 280x200px - Metal work -->
+                    <img src="images/metal-work.jpg" alt="Art Deco Metal Work" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Premium Metals</h3>
+                    <p style="line-height: 1.7; margin-bottom: 1rem;">
+                        Brass, chrome, stainless steel, silver with perfect plating and polishing techniques.
+                    </p>
+                    <div style="height: 4px; background: var(--gradient-gold);"></div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="marble-stone-modal">
+                    <!-- Image: 280x200px - Marble and stone -->
+                    <img src="images/marble-stone.jpg" alt="Marble and Stone" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Natural Precious Stones</h3>
+                    <p style="line-height: 1.7; margin-bottom: 1rem;">
+                        Marble, granite, limestone with unique natural patterns and rich colors.
+                    </p>
+                    <div style="height: 4px; background: var(--gradient-gold);"></div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="lacquer-technique-modal">
+                    <!-- Image: 280x200px - Lacquer technique -->
+                    <img src="images/lacquer-technique.jpg" alt="Lacquer Technique" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Traditional Lacquer</h3>
+                    <p style="line-height: 1.7; margin-bottom: 1rem;">
+                        Asian lacquer technique creating glossy surfaces with beautiful light reflection.
+                    </p>
+                    <div style="height: 4px; background: var(--gradient-gold);"></div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="luxury-leather-modal">
+                    <!-- Image: 280x200px - Luxury leather -->
+                    <img src="images/luxury-leather.jpg" alt="Luxury Leather" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Premium Leather</h3>
+                    <p style="line-height: 1.7; margin-bottom: 1rem;">
+                        Shagreen, stingray leather, finest cattle hide with exquisite tanning techniques.
+                    </p>
+                    <div style="height: 4px; background: var(--gradient-gold);"></div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+                <div class="art-deco-card clickable-card" data-modal="crafting-techniques-modal">
+                    <!-- Image: 280x200px - Crafting techniques -->
+                    <img src="images/crafting-techniques.jpg" alt="Art Deco Crafting" style="width: 100%; height: 180px; object-fit: cover; margin-bottom: 1rem; cursor: pointer;">
+                    <h3 style="color: var(--primary-burgundy); font-size: 1.3rem; margin-bottom: 1rem;">Crafting Techniques</h3>
+                    <p style="line-height: 1.7; margin-bottom: 1rem;">
+                        Marquetry (wood inlay), inlay (carving), sophisticated metalwork.
+                    </p>
+                    <div style="height: 4px; background: var(--gradient-gold);"></div>
+                    <div class="click-overlay">
+                        <span class="click-hint">Click to explore</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Influence Section -->
+    <section class="section" style="background: var(--primary-light);">
+        <div class="container">
+            <h2 class="section-title">Legacy in Modern Design</h2>
+            <div class="art-deco-card" style="background: var(--primary-navy); color: var(--primary-light); text-align: center; padding: 3rem;">
+                <h3 style="color: var(--primary-gold); margin-bottom: 2rem; font-size: 2rem;">Influence on Today</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="clickable-card" data-modal="luxury-interior-modal">
+                        <!-- Image: 250x200px - Luxury furniture design -->
+                        <img src="images/luxury-interior-modern.jpg" alt="Modern Luxury Furniture" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold); margin-bottom: 1rem;">Luxury Furniture</h4>
+                        <p>High-end brands still apply Art Deco principles in luxurious furniture design</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div class="clickable-card" data-modal="hotel-design-modal">
+                        <!-- Image: 250x200px - 5-star hotel design -->
+                        <img src="images/hotel-design-modern.jpg" alt="Modern Hotel Design" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold); margin-bottom: 1rem;">5-Star Hotels</h4>
+                        <p>Many luxury hotels use Art Deco style to create prestigious spaces</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                    <div class="clickable-card" data-modal="product-design-modal">
+                        <!-- Image: 250x200px - Product design -->
+                        <img src="images/product-design-modern.jpg" alt="Modern Product Design" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border: 2px solid var(--primary-gold); cursor: pointer;">
+                        <h4 style="color: var(--primary-gold); margin-bottom: 1rem;">Product Design</h4>
+                        <p>Modern product design learns from Art Deco's geometry and premium materials</p>
+                        <div class="click-overlay">
+                            <span class="click-hint">Click to explore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="section" style="background: var(--gradient-dark); color: var(--primary-light); text-align: center;">
+        <div class="container">
+            <div class="zigzag-pattern" style="margin: 0 auto 3rem; width: 200px;"></div>
+            <blockquote style="font-size: 1.8rem; font-style: italic; max-width: 900px; margin: 0 auto; line-height: 1.6;">
+                "Art Deco is the result of a world that had experienced the pain of war and wanted to create organized beauty – 
+                a world where humans controlled machines and the future."
+            </blockquote>
+            <cite style="display: block; margin-top: 2rem; font-size: 1.2rem; color: var(--primary-gold);">
+                — TheArtStory.org
+            </cite>
+            <div class="zigzag-pattern" style="margin: 3rem auto 0; width: 200px;"></div>
+        </div>
+    </section>
+
+    <!-- Modal System -->
+    <!-- Ruhlmann Modal -->
+    <div id="ruhlmann-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Émile-Jacques Ruhlmann: Master of Art Deco Furniture</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/ruhlmann-portrait.jpg" alt="Émile-Jacques Ruhlmann" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Life and Career</h3>
+                    <p>Émile-Jacques Ruhlmann (1879-1933) is considered the master of Art Deco interior art. He began his career with a family paint and wallpaper company, but quickly developed into a renowned interior designer with clients from Parisian high society.</p>
+                    
+                    <h4>Design Philosophy:</h4>
+                    <ul>
+                        <li><strong>Absolute quality:</strong> Only using the finest materials and most skilled craftsmen</li>
+                        <li><strong>Simple yet luxurious:</strong> Avoiding complex decoration, focusing on elegant lines</li>
+                        <li><strong>Color harmony:</strong> Using neutral color palettes with golden accents</li>
+                        <li><strong>Function and aesthetics:</strong> Each product both beautiful and practical</li>
+                        <li><strong>Spirit of the era:</strong> Reflecting the modernity and progress of the 1920s</li>
+                    </ul>
+                    
+                    <h4>Characteristic Materials:</h4>
+                    <ul>
+                        <li><strong>Amboyna Wood:</strong> Rare wood from Indonesia with unique swirled grain</li>
+                        <li><strong>Ebony Wood:</strong> Pure black wood from Africa, extremely hard and durable</li>
+                        <li><strong>Rosewood:</strong> Purple-red wood with distinctive fragrance</li>
+                        <li><strong>Ivory:</strong> Used for exquisite decorative details</li>
+                        <li><strong>Precious metals:</strong> Silver, brass, and chrome for hardware</li>
+                    </ul>
+                    
+                    <h4>Notable Works:</h4>
+                    <ul>
+                        <li><strong>"Corner" Table:</strong> Simple design with characteristic elliptical table legs</li>
+                        <li><strong>Amboyna Cabinet:</strong> Using amboyna wood with ivory and silver details</li>
+                        <li><strong>Bergère Chair:</strong> Armchair with premium leather upholstery and elegant wooden frame</li>
+                        <li><strong>"Soleil" Desk:</strong> With unique semi-circular desktop</li>
+                    </ul>
+                    
+                    <h4>Influence and Legacy:</h4>
+                    <p>Ruhlmann elevated furniture making to the level of high art. He proved that furniture could be both functional household items and works of art. His products today sell for millions of dollars and are displayed in the world's leading art museums.</p>
+                    
+                    <h4>Crafting Techniques:</h4>
+                    <p>Ruhlmann worked with the most skilled craftsmen, using traditional marquetry techniques combined with modern technology. Each product was hand-finished with millimeter precision.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ruhlmann Workshop Modal -->
+    <div id="ruhlmann-workshop-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Ruhlmann's Workshop: Craftsmanship Excellence</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/ruhlmann-workshop.jpg" alt="Ruhlmann in his workshop" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>The Master's Workshop</h3>
+                    <p>Émile-Jacques Ruhlmann's workshop was a temple of craftsmanship where the finest furniture of the Art Deco era was created. Located in Paris, this atelier employed the most skilled artisans of the time.</p>
+                    
+                    <h4>Workshop Organization:</h4>
+                    <ul>
+                        <li><strong>Master craftsmen:</strong> 50+ specialists in different techniques</li>
+                        <li><strong>Departments:</strong> Wood preparation, marquetry, finishing, metalwork</li>
+                        <li><strong>Quality control:</strong> Multiple inspection stages</li>
+                        <li><strong>Materials storage:</strong> Climate-controlled exotic wood storage</li>
+                        <li><strong>Design studio:</strong> Where sketches became reality</li>
+                    </ul>
+                    
+                    <h4>Production Process:</h4>
+                    <ul>
+                        <li><strong>Design phase:</strong> Hand-drawn sketches and detailed plans</li>
+                        <li><strong>Material selection:</strong> Personal inspection by Ruhlmann</li>
+                        <li><strong>Rough construction:</strong> Basic framework assembly</li>
+                        <li><strong>Marquetry work:</strong> Intricate veneer application</li>
+                        <li><strong>Final finishing:</strong> Hand-polished to perfection</li>
+                    </ul>
+                    
+                    <h4>Workshop Philosophy:</h4>
+                    <p>Every piece that left Ruhlmann's workshop had to meet his exacting standards. No detail was too small, no material too expensive if it served the pursuit of perfection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chareau Modal -->
+    <div id="chareau-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Pierre Chareau: Pioneer Architect</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/chareau-portrait.jpg" alt="Pierre Chareau" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Revolutionary Designer</h3>
+                    <p>Pierre Chareau (1883-1950) was a French architect and interior designer, known as a pioneer in using industrial materials in interior design and architecture. He is considered the bridge between Art Deco and the Modernist movement.</p>
+                    
+                    <h4>Maison de Verre - Architectural Masterpiece:</h4>
+                    <p>Chareau's most famous work is the "Maison de Verre" (Glass House) built from 1928-1932 in Paris. This is one of the most important modern architectural works of the 20th century.</p>
+                    
+                    <h4>Maison de Verre Features:</h4>
+                    <ul>
+                        <li><strong>Glass block walls:</strong> Using 13,000 glass blocks to create transparent walls</li>
+                        <li><strong>Steel frame:</strong> Prefabricated steel frame structure, modern for its time</li>
+                        <li><strong>Natural light:</strong> Optimizing the use of natural light</li>
+                        <li><strong>Flexible space:</strong> Movable partitions that can be changed as needed</li>
+                        <li><strong>Technology integration:</strong> Modern air conditioning and lighting systems</li>
+                    </ul>
+                    
+                    <h4>Design Philosophy:</h4>
+                    <ul>
+                        <li><strong>Authentic materials:</strong> Not hiding materials, letting them express their natural beauty</li>
+                        <li><strong>Function determines form:</strong> Design serves the purpose of use</li>
+                        <li><strong>Light as key element:</strong> Using light as a design material</li>
+                        <li><strong>Art integration:</strong> Combining art into living spaces</li>
+                        <li><strong>Flexible space:</strong> Spaces that can change according to needs</li>
+                    </ul>
+                    
+                    <h4>Characteristic Furniture:</h4>
+                    <ul>
+                        <li><strong>Tubular steel chairs:</strong> Using bent steel tubing with leather cushions</li>
+                        <li><strong>Glass tables:</strong> Glass tops with metal legs</li>
+                        <li><strong>Metal cabinets:</strong> Steel storage units with geometric handles</li>
+                        <li><strong>Multi-function lamps:</strong> Adjustable and movable lighting</li>
+                    </ul>
+                    
+                    <h4>Influence on Modern Architecture:</h4>
+                    <p>Chareau pioneered the use of industrial materials like steel, glass, and concrete in residential architecture. He influenced many later architects like Le Corbusier and Mies van der Rohe.</p>
+                    
+                    <h4>Design Legacy:</h4>
+                    <p>Chareau's design principles of using industrial materials, optimizing natural light and creating flexible spaces are still widely applied in modern architecture and interior design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dunand Modal -->
+    <div id="dunand-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Jean Dunand: Master of Lacquer Art</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/dunand-portrait.jpg" alt="Jean Dunand" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Bringing Eastern Art into Art Deco</h3>
+                    <p>Jean Dunand (1877-1942) was born in Switzerland but worked mainly in Paris. He initially was a metalworker, but later turned to lacquer art and became a master in this field, bringing Asian techniques into Art Deco style.</p>
+                    
+                    <h4>Artistic Journey:</h4>
+                    <p>Dunand began his career in jewelry making, then learned lacquer art from Seizo Sugawara - a Japanese craftsman. He spent 4 years mastering this technique and then developed his own style combining Asian techniques with Art Deco aesthetics.</p>
+                    
+                    <h4>Characteristic Lacquer Techniques:</h4>
+                    <ul>
+                        <li><strong>Traditional Urushi:</strong> Using tree resin from Japan to create lacquer layers</li>
+                        <li><strong>Multiple layers:</strong> Usually applying 20-30 layers of lacquer</li>
+                        <li><strong>Perfect polishing:</strong> Each layer hand-polished</li>
+                        <li><strong>Eggshell inlay:</strong> Using eggshell to create patterns</li>
+                        <li><strong>Unique color combinations:</strong> Combining black, red, gold and silver</li>
+                    </ul>
+                    
+                    <h4>Product Types:</h4>
+                    <ul>
+                        <li><strong>Decorative panels:</strong> Large panels with landscape and animal motifs</li>
+                        <li><strong>Lacquered furniture:</strong> Tables, chairs, cabinets with glossy lacquer surfaces</li>
+                        <li><strong>Decorative objects:</strong> Vases, jewelry boxes</li>
+                        <li><strong>Personal items:</strong> Cigarette cases, makeup mirrors</li>
+                        <li><strong>Wall art:</strong> Wall decoration for luxury buildings</li>
+                    </ul>
+                    
+                    <h4>Patterns and Themes:</h4>
+                    <ul>
+                        <li><strong>Asian animals:</strong> Dragons, tigers, cranes, carp</li>
+                        <li><strong>Landscapes:</strong> Mountains and rivers in classical Asian style</li>
+                        <li><strong>Geometric patterns:</strong> Combining Asian motifs with Art Deco geometry</li>
+                        <li><strong>Figures:</strong> Dancers, artists, aristocrats</li>
+                        <li><strong>Stylized nature:</strong> Leaves, fruits stylized</li>
+                    </ul>
+                    
+                    <h4>Notable Clients and Projects:</h4>
+                    <p>Dunand worked for the wealthiest clients of the time, including art collectors and nobility. He decorated the interior of the yacht "Normandie" - one of the most luxurious yachts in the world.</p>
+                    
+                    <h4>Crafting Techniques:</h4>
+                    <p>Each of Dunand's works took from several months to several years to complete. The process included: surface preparation, applying multiple lacquer layers, decoration, and finishing. The shine of Dunand's lacquer could reflect like a mirror.</p>
+                    
+                    <h4>Influence on Art:</h4>
+                    <p>Dunand proved that traditional Asian techniques could be successfully applied to Western decorative arts. He paved the way for cultural exchange in art and influenced many later craftsmen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ruhlmann Table Modal -->
+    <div id="ruhlmann-table-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Ruhlmann Corner Table: Elegant Simplicity</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/ruhlmann-corner-table.jpg" alt="Ruhlmann Corner Table" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>The Iconic Corner Table</h3>
+                    <p>This corner table exemplifies Ruhlmann's design philosophy: simple yet sophisticated forms that showcase the beauty of premium materials and expert craftsmanship.</p>
+                    
+                    <h4>Design Features:</h4>
+                    <ul>
+                        <li><strong>Ebony wood:</strong> Pure black African ebony for the structure</li>
+                        <li><strong>Silver inlay:</strong> Hand-applied silver decorative elements</li>
+                        <li><strong>Curved legs:</strong> Characteristic elliptical supports</li>
+                        <li><strong>Proportions:</strong> Golden ratio dimensions</li>
+                        <li><strong>Finish:</strong> Hand-polished to mirror gloss</li>
+                    </ul>
+                    
+                    <h4>Construction Details:</h4>
+                    <ul>
+                        <li><strong>Joinery:</strong> Traditional mortise and tenon</li>
+                        <li><strong>Top:</strong> Book-matched ebony veneer</li>
+                        <li><strong>Edge treatment:</strong> Hand-shaped bullnose profile</li>
+                        <li><strong>Hardware:</strong> Concealed construction fasteners</li>
+                    </ul>
+                    
+                    <h4>Historical Context:</h4>
+                    <p>Created in 1925, this table was featured in the Paris Exposition and became one of Ruhlmann's most copied designs. Original pieces now sell for over $500,000.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ruhlmann Cabinet Modal -->
+    <div id="ruhlmann-cabinet-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Ruhlmann Amboyna Cabinet: Ultimate Luxury</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/ruhlmann-cabinet.jpg" alt="Ruhlmann Amboyna Cabinet" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>The Legendary Amboyna Cabinet</h3>
+                    <p>Considered the pinnacle of Art Deco cabinetmaking, this piece uses the world's most expensive wood combined with precious metal details.</p>
+                    
+                    <h4>Materials Used:</h4>
+                    <ul>
+                        <li><strong>Amboyna burl:</strong> Rare wood from Indonesia's Molucca Islands</li>
+                        <li><strong>Ivory details:</strong> Carefully carved decorative elements</li>
+                        <li><strong>Silver hardware:</strong> Custom-made handles and hinges</li>
+                        <li><strong>Silk lining:</strong> Interior compartments lined in finest silk</li>
+                    </ul>
+                    
+                    <h4>Unique Features:</h4>
+                    <ul>
+                        <li><strong>Grain pattern:</strong> Each cabinet has unique burl figure</li>
+                        <li><strong>Secret compartments:</strong> Hidden storage areas</li>
+                        <li><strong>Adjustable shelves:</strong> Interior customization</li>
+                        <li><strong>Soft-close doors:</strong> Precision-fitted mechanisms</li>
+                    </ul>
+                    
+                    <h4>Investment Value:</h4>
+                    <p>Originally priced at 40,000 francs in 1925 (equivalent to $250,000 today), these cabinets now command over $2 million at auction due to their rarity and craftsmanship.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ruhlmann Chair Modal -->
+    <div id="ruhlmann-chair-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Ruhlmann Bergère Chair: Comfort & Elegance</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/ruhlmann-chair.jpg" alt="Ruhlmann Bergère Chair" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>The Perfect Bergère</h3>
+                    <p>This armchair represents the ideal fusion of comfort and sophistication, featuring Ruhlmann's signature attention to both form and function.</p>
+                    
+                    <h4>Design Elements:</h4>
+                    <ul>
+                        <li><strong>Frame material:</strong> Solid walnut with ebony accents</li>
+                        <li><strong>Upholstery:</strong> Hand-selected Morocco leather</li>
+                        <li><strong>Cushioning:</strong> Horsehair and down filling</li>
+                        <li><strong>Stitching:</strong> Hand-sewn with silk thread</li>
+                        <li><strong>Nailheads:</strong> Brass decorative trim</li>
+                    </ul>
+                    
+                    <h4>Ergonomic Features:</h4>
+                    <ul>
+                        <li><strong>Seat height:</strong> Precisely calculated for comfort</li>
+                        <li><strong>Arm rest curve:</strong> Anatomically designed</li>
+                        <li><strong>Back support:</strong> Gentle lumbar curve</li>
+                        <li><strong>Seat depth:</strong> Optimized for extended sitting</li>
+                    </ul>
+                    
+                    <h4>Craftsmanship Details:</h4>
+                    <p>Each chair required 200+ hours of skilled labor, from frame construction through final upholstery. The precise spring system was revolutionary for its time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maison de Verre Modal -->
+    <div id="maison-verre-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Maison de Verre: Glass House Masterpiece</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/maison-de-verre.jpg" alt="Maison de Verre by Pierre Chareau" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Revolutionary Architecture</h3>
+                    <p>Built between 1928-1932, Maison de Verre represents one of the most important examples of early modern architecture, pioneering the use of industrial materials in residential design.</p>
+                    
+                    <h4>Architectural Innovation:</h4>
+                    <ul>
+                        <li><strong>Glass block facade:</strong> 13,000 Nevada glass blocks</li>
+                        <li><strong>Steel frame structure:</strong> Prefabricated steel construction</li>
+                        <li><strong>Flexible spaces:</strong> Movable partitions throughout</li>
+                        <li><strong>Mechanical systems:</strong> Early air conditioning integration</li>
+                        <li><strong>Natural light:</strong> Optimized daylight penetration</li>
+                    </ul>
+                    
+                    <h4>Interior Features:</h4>
+                    <ul>
+                        <li><strong>Custom furniture:</strong> Built-in steel and leather pieces</li>
+                        <li><strong>Integrated lighting:</strong> Architectural lighting design</li>
+                        <li><strong>Storage solutions:</strong> Hidden and modular storage</li>
+                        <li><strong>Material palette:</strong> Glass, steel, leather, rubber</li>
+                    </ul>
+                    
+                    <h4>Historical Impact:</h4>
+                    <p>This house influenced generations of architects including Le Corbusier and Mies van der Rohe. It remains a private residence and architectural pilgrimage site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dunand Lacquer Modal -->
+    <div id="dunand-lacquer-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Dunand's Lacquer Mastery: Eastern Art in Paris</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/dunand-lacquer-work.jpg" alt="Jean Dunand Lacquer Work" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Master of Lacquer Arts</h3>
+                    <p>Jean Dunand spent four years learning traditional Japanese lacquer techniques from master Seizo Sugawara, then adapted these methods to create uniquely Western Art Deco pieces.</p>
+                    
+                    <h4>Lacquer Process:</h4>
+                    <ul>
+                        <li><strong>Base preparation:</strong> Wood substrate sealed and smoothed</li>
+                        <li><strong>Foundation layers:</strong> 8-12 base coats of urushi</li>
+                        <li><strong>Decorative layers:</strong> Colored lacquers and metal powders</li>
+                        <li><strong>Polishing stages:</strong> Each layer hand-polished</li>
+                        <li><strong>Final coating:</strong> Protective clear lacquer finish</li>
+                    </ul>
+                    
+                    <h4>Signature Techniques:</h4>
+                    <ul>
+                        <li><strong>Eggshell inlay:</strong> Crushed eggshell for texture</li>
+                        <li><strong>Metal powder sprinkling:</strong> Gold and silver maki-e technique</li>
+                        <li><strong>Color gradations:</strong> Subtle color transitions</li>
+                        <li><strong>Raised relief:</strong> Three-dimensional surface effects</li>
+                    </ul>
+                    
+                    <h4>Cultural Bridge:</h4>
+                    <p>Dunand's work represented the first successful integration of traditional Asian crafts with European Art Deco aesthetics, creating a new artistic vocabulary.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glass Block Modal -->
+    <div id="glass-block-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Glass Block Walls: Architectural Breakthrough</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/glass-block-wall.jpg" alt="Glass Block Architecture" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Glass Block Wall Technology</h3>
+                    <p>Pierre Chareau was a pioneer in using glass blocks in residential architecture. He used 13,000 Nevada glass blocks to build Maison de Verre, creating a transparent wall while still ensuring privacy.</p>
+                    
+                    <h4>Technical Specifications:</h4>
+                    <ul>
+                        <li><strong>Standard size:</strong> 19x19x8cm, manufactured at Saint-Gobain factory</li>
+                        <li><strong>Weight:</strong> Each block weighs 2.5kg, total wall weight up to 32.5 tons</li>
+                        <li><strong>Construction:</strong> Two glass halves welded together, creating air cavity inside</li>
+                        <li><strong>Thickness:</strong> 8cm ensures good sound and thermal insulation</li>
+                        <li><strong>Light transmission:</strong> Allows 70% natural light to pass through</li>
+                    </ul>
+                    
+                    <h4>Outstanding Advantages:</h4>
+                    <ul>
+                        <li><strong>Natural light:</strong> Creates diffuse, soft light, no harsh shadows</li>
+                        <li><strong>Privacy:</strong> Transparent from inside but difficult to see from outside</li>
+                        <li><strong>Thermal insulation:</strong> Air cavity inside creates effective insulation layer</li>
+                        <li><strong>Fire resistance:</strong> Glass doesn't burn, prevents fire spread</li>
+                        <li><strong>Waterproof:</strong> Smooth surface is waterproof</li>
+                    </ul>
+                    
+                    <h4>Construction Techniques:</h4>
+                    <p>Chareau developed a special steel frame system to mount the glass blocks. Each block was placed in a separate metal frame, creating characteristic geometric joints. This work required millimeter precision.</p>
+                    
+                    <h4>Influence on Architecture:</h4>
+                    <p>Chareau's use of glass blocks influenced many modern architects like Le Corbusier and Mies van der Rohe. Today, this technique is widely applied in office buildings, shopping centers and modern homes.</p>
+                    
+                    <h4>Maintenance and Longevity:</h4>
+                    <p>Glass blocks have a lifespan of over 100 years, requiring only periodic cleaning. Maison de Verre after nearly 90 years still maintains its original beauty, proving the durability of this material.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Steel Furniture Modal -->
+    <div id="steel-furniture-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Steel Furniture: Design Modernization</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/steel-furniture.jpg" alt="Steel Frame Furniture" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Steel Furniture Revolution</h3>
+                    <p>Chareau pioneered the use of industrial steel in furniture manufacturing. He didn't hide the material but let steel express its natural beauty, combining it with leather and fabric to create comfort.</p>
+                    
+                    <h4>Materials Used:</h4>
+                    <ul>
+                        <li><strong>Tubular steel:</strong> 25-30mm diameter, precision bent with machinery</li>
+                        <li><strong>Steel plate:</strong> 2-3mm thick, laser cut into geometric shapes</li>
+                        <li><strong>Chrome plating:</strong> 0.1mm thick chrome coating creating mirror-like surface</li>
+                        <li><strong>Genuine leather:</strong> Italian cowhide tanned using traditional methods</li>
+                        <li><strong>Premium fabrics:</strong> Wool and cotton woven to custom designs</li>
+                    </ul>
+                    
+                    <h4>Manufacturing Techniques:</h4>
+                    <ul>
+                        <li><strong>TIG welding:</strong> Gas-shielded welding for smooth, slag-free welds</li>
+                        <li><strong>Bending:</strong> Steel bending with hydraulic machinery for high precision</li>
+                        <li><strong>Polishing:</strong> Surface polishing to Ra 0.1 roughness</li>
+                        <li><strong>Assembly:</strong> Assembly with stainless steel bolts and screws</li>
+                        <li><strong>Upholstery:</strong> Traditional hand-crafted cushioning techniques</li>
+                    </ul>
+                    
+                    <h4>Signature Chair Models:</h4>
+                    <ul>
+                        <li><strong>Cantilever Chair:</strong> S-curved steel frame with no rear legs</li>
+                        <li><strong>Bergère Chair:</strong> Steel frame with leather-upholstered armrests</li>
+                        <li><strong>Bar Chair:</strong> High legs with steel footrest</li>
+                        <li><strong>Swivel Chair:</strong> 360-degree steel swivel mechanism</li>
+                    </ul>
+                    
+                    <h4>Advantages of Steel Furniture:</h4>
+                    <ul>
+                        <li><strong>Durability:</strong> Lifespan over 50 years, no rot or decay</li>
+                        <li><strong>Load bearing:</strong> Can support heavy weights without deformation</li>
+                        <li><strong>Hygiene:</strong> Smooth surface easy to clean and sanitize</li>
+                        <li><strong>Recyclability:</strong> 100% recyclable, environmentally friendly</li>
+                        <li><strong>Flexibility:</strong> Easy to adjust and repair</li>
+                    </ul>
+                    
+                    <h4>Design Influence:</h4>
+                    <p>Chareau's steel furniture style influenced the Bauhaus movement and became the foundation for International Style. Brands like Knoll and Herman Miller have commercialized many similar designs.</p>
+                    
+                    <h4>Modern Applications:</h4>
+                    <p>Today, steel furniture is widely used in offices, restaurants, and hotels. Companies like Vitra and Cassina still produce reproductions of these classic designs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Partitions Modal -->
+    <div id="mobile-partitions-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Mobile Partitions: Flexible Space</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/mobile-partitions.jpg" alt="Mobile Partitions" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Flexible Space Concept</h3>
+                    <p>Chareau invented mobile partition systems to optimize space utilization. In Maison de Verre, he designed various types of partitions that could change spatial structure according to usage needs.</p>
+                    
+                    <h4>Partition Types:</h4>
+                    <ul>
+                        <li><strong>Sliding partitions:</strong> Run on steel tracks, can expand or contract space</li>
+                        <li><strong>Folding partitions:</strong> Fold like accordion, maximize space savings</li>
+                        <li><strong>Rotating partitions:</strong> Can rotate 90-180 degrees to change space direction</li>
+                        <li><strong>Lifting partitions:</strong> Can be raised to ceiling or lowered to floor</li>
+                        <li><strong>Modular partitions:</strong> Small panels that can be assembled as needed</li>
+                    </ul>
+                    
+                    <h4>Operating Mechanisms:</h4>
+                    <ul>
+                        <li><strong>Suspension tracks:</strong> Ceiling-mounted steel track system supporting 200kg/m</li>
+                        <li><strong>Wheels:</strong> Steel wheels with precision bearings, smooth operation</li>
+                        <li><strong>Handles:</strong> Ergonomic design for easy operation</li>
+                        <li><strong>Locking system:</strong> Hydraulic locks to secure partitions in place</li>
+                        <li><strong>Dampers:</strong> Shock absorbers for smooth stopping</li>
+                    </ul>
+                    
+                    <h4>Materials Used:</h4>
+                    <ul>
+                        <li><strong>Steel frame:</strong> 40x40mm steel box, 3mm thick</li>
+                        <li><strong>Panel coverings:</strong> Glass, wood, metal, or composite</li>
+                        <li><strong>Sound insulation:</strong> 5cm thick glass wool layer</li>
+                        <li><strong>Surface finish:</strong> Epoxy paint or powder coating</li>
+                        <li><strong>Seals:</strong> Rubber gaskets for waterproofing and sound insulation</li>
+                    </ul>
+                    
+                    <h4>Design Benefits:</h4>
+                    <ul>
+                        <li><strong>Multi-functional:</strong> One space can serve multiple purposes</li>
+                        <li><strong>Space optimization:</strong> Efficient use of every square meter</li>
+                        <li><strong>Adaptable over time:</strong> Can adjust to changing needs</li>
+                        <li><strong>Light control:</strong> Adjust light entering each area</li>
+                        <li><strong>Sound control:</strong> Create quiet spaces when needed</li>
+                    </ul>
+                    
+                    <h4>Applications in Maison de Verre:</h4>
+                    <ul>
+                        <li><strong>Living room:</strong> Can expand to accommodate large gatherings</li>
+                        <li><strong>Dining room:</strong> Connect with kitchen when cooking, separate when dining</li>
+                        <li><strong>Bedroom:</strong> Separate from work area</li>
+                        <li><strong>Bathroom:</strong> Expand when bathing, contract when not in use</li>
+                        <li><strong>Office:</strong> Separate from entertainment areas</li>
+                    </ul>
+                    
+                    <h4>Influence on Architecture:</h4>
+                    <p>Chareau's mobile partition concept has become standard in modern architecture. Architects like Mies van der Rohe and Tadao Ando have developed this idea into "flexible architecture".</p>
+                    
+                    <h4>Modern Applications:</h4>
+                    <p>Today, mobile partitions are widely used in co-working offices, showrooms, restaurants, hotels, and compact apartments. Modern technology has enabled automation of operation with electric motors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lacquer Panels Modal -->
+    <div id="lacquer-panels-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Lacquer Panels: Eastern Art</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/lacquer-panels.jpg" alt="Dunand Lacquer Panels" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Dunand Lacquer Panels</h3>
+                    <p>Jean Dunand created large-scale lacquer panels featuring Asian landscapes and animals stylized in Art Deco fashion. These works typically measured 2-3 meters and were used to decorate living rooms and dining rooms of the aristocracy.</p>
+                    
+                    <h4>Manufacturing Process:</h4>
+                    <ul>
+                        <li><strong>Base preparation:</strong> Beech or poplar wood carefully treated and smoothed</li>
+                        <li><strong>Primer layers:</strong> 3-4 coats of primer to create adhesion base</li>
+                        <li><strong>Lacquer layers:</strong> 15-20 coats of urushi, each dried for 24 hours</li>
+                        <li><strong>Polishing:</strong> Each layer polished with fine sandpaper</li>
+                        <li><strong>Decoration:</strong> Patterns painted with colored lacquer and eggshell</li>
+                        <li><strong>Finishing:</strong> 5-7 transparent lacquer layers for protection</li>
+                    </ul>
+                    
+                    <h4>Characteristic Motifs:</h4>
+                    <ul>
+                        <li><strong>Landscapes:</strong> Mountains and rivers in Japanese style</li>
+                        <li><strong>Animals:</strong> Dragons, tigers, cranes, carp in dynamic poses</li>
+                        <li><strong>Flora:</strong> Cherry blossoms, bamboo, chrysanthemums stylized in Art Deco</li>
+                        <li><strong>Geometric:</strong> Zigzag, sunburst, chevron patterns</li>
+                        <li><strong>Figures:</strong> Geisha, samurai, dancers in period costumes</li>
+                    </ul>
+                    
+                    <h4>Decorative Techniques:</h4>
+                    <ul>
+                        <li><strong>Maki-e:</strong> Sprinkling gold and silver powder on wet lacquer</li>
+                        <li><strong>Raden:</strong> Inlaying shell and pearl pieces for effects</li>
+                        <li><strong>Tsuikin:</strong> Applying gold and silver leaf to surface</li>
+                        <li><strong>Chinkin:</strong> Carving fine lines and filling with gold</li>
+                        <li><strong>Togidashi:</strong> Polishing to reveal underlying color layers</li>
+                    </ul>
+                    
+                    <h4>Characteristic Colors:</h4>
+                    <ul>
+                        <li><strong>Pure black:</strong> Base color, background for other colors</li>
+                        <li><strong>Vermillion red:</strong> Accent color for flowers and clothing</li>
+                        <li><strong>Gold:</strong> Used for sun, dragons, and borders</li>
+                        <li><strong>Silver:</strong> Creates moonlight, water, and metal effects</li>
+                        <li><strong>Green:</strong> For trees and natural landscapes</li>
+                    </ul>
+                    
+                    <h4>Sizes and Designs:</h4>
+                    <ul>
+                        <li><strong>Single panel:</strong> 120x200cm, weight 45kg</li>
+                        <li><strong>Double panel:</strong> 2 panels 120x200cm, foldable</li>
+                        <li><strong>Triple panel:</strong> 3 panels creating continuous story</li>
+                        <li><strong>Four panel:</strong> 4 panels depicting four seasons or directions</li>
+                        <li><strong>Wall panels:</strong> Fixed panels 300x250cm</li>
+                    </ul>
+                    
+                    <h4>Clients and Projects:</h4>
+                    <ul>
+                        <li><strong>Rothschild Family:</strong> Lacquer panels for château</li>
+                        <li><strong>Cartier:</strong> Panels decorating Paris showroom</li>
+                        <li><strong>SS Normandie:</strong> 12 panels for first-class dining</li>
+                        <li><strong>Musée d'Orsay:</strong> Collection panels currently on display</li>
+                        <li><strong>Private collectors:</strong> Over 200 panels for villas</li>
+                    </ul>
+                    
+                    <h4>Value and Conservation:</h4>
+                    <p>Dunand's lacquer panels currently range from $500,000 to $2 million USD. They are preserved at temperatures of 20-22°C and humidity of 45-55% to prevent cracking and warping.</p>
+                    
+                    <h4>Influence on Art:</h4>
+                    <p>Dunand's work bridged the gap between traditional Japanese art and European Art Deco, paving the way for cross-cultural artistic exchange and influencing many contemporary artists.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lacquer Furniture Modal -->
+    <div id="lacquer-furniture-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Lacquered Furniture: Eastern Luxury</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/lacquer-furniture.jpg" alt="Lacquer Furniture" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Dunand's Lacquered Furniture</h3>
+                    <p>Jean Dunand revolutionized Art Deco furniture by applying traditional lacquer techniques to furniture design. His tables, chairs, and cabinets have mirror-like lacquered surfaces, creating beautiful light reflection effects.</p>
+                    
+                    <h4>Types of Furniture:</h4>
+                    <ul>
+                        <li><strong>Dining tables:</strong> Round or oval tops with geometric legs</li>
+                        <li><strong>Coffee tables:</strong> Low design with Asian motifs</li>
+                        <li><strong>Wine cabinets:</strong> Tall cabinets with lacquered drawers and doors</li>
+                        <li><strong>Lounge chairs:</strong> Wooden frames completely covered in lacquer</li>
+                        <li><strong>Display cabinets:</strong> Display cases with interior lighting</li>
+                    </ul>
+                    
+                    <h4>Furniture Lacquer Techniques:</h4>
+                    <ul>
+                        <li><strong>Substrate:</strong> High-quality poplar or beech wood</li>
+                        <li><strong>Base coat:</strong> 5-7 foundation layers for adhesion</li>
+                        <li><strong>Main layers:</strong> 15-20 urushi layers, each 0.1mm thick</li>
+                        <li><strong>Decoration:</strong> Applied maki-e and raden techniques</li>
+                        <li><strong>Final coat:</strong> 3-5 transparent protective layers</li>
+                    </ul>
+                    
+                    <h4>Surface Characteristics:</h4>
+                    <ul>
+                        <li><strong>Shine level:</strong> Gloss level 95-98%, mirror-like reflection</li>
+                        <li><strong>Hardness:</strong> Hardness 2H, scratch resistant</li>
+                        <li><strong>Water resistance:</strong> 100% waterproof, easy to clean</li>
+                        <li><strong>Heat resistance:</strong> Withstands temperatures up to 80°C</li>
+                        <li><strong>Lifespan:</strong> Durable over 100 years with proper care</li>
+                    </ul>
+                    
+                    <h4>Patterns and Colors:</h4>
+                    <ul>
+                        <li><strong>Solid colors:</strong> Pure black, vermillion red, gold</li>
+                        <li><strong>Gradient:</strong> Color transitions from black to red, black to gold</li>
+                        <li><strong>Textured:</strong> Rough surfaces creating special effects</li>
+                        <li><strong>Pictorial:</strong> Stylized floral, leaf, and animal motifs</li>
+                        <li><strong>Geometric:</strong> Art Deco geometric patterns</li>
+                    </ul>
+                    
+                    <h4>Production Process:</h4>
+                    <ul>
+                        <li><strong>Design:</strong> Detailed sketches and 3D models</li>
+                        <li><strong>Woodwork:</strong> Frame crafted by master craftsmen</li>
+                        <li><strong>Preparation:</strong> Surface treatment, filling imperfections</li>
+                        <li><strong>Lacquering:</strong> 3-6 month lacquering process</li>
+                        <li><strong>Quality control:</strong> Strict quality inspection</li>
+                    </ul>
+                    
+                    <h4>Clients and Projects:</h4>
+                    <ul>
+                        <li><strong>Couturier Jacques Doucet:</strong> Complete living room furniture</li>
+                        <li><strong>Maison Worth:</strong> Furniture for haute couture boutique</li>
+                        <li><strong>Private collectors:</strong> Over 500 pieces for mansions</li>
+                        <li><strong>Museums:</strong> Pieces in Louvre and V&A collections</li>
+                    </ul>
+                    
+                    <h4>Market Value:</h4>
+                    <p>Dunand's lacquered furniture currently ranges from $200,000 to $1.5 million USD depending on size, complexity and provenance. Pieces with signatures and complete documentation have the highest value.</p>
+                    
+                    <h4>Conservation and Maintenance:</h4>
+                    <ul>
+                        <li><strong>Temperature:</strong> 18-22°C, avoid temperature fluctuations</li>
+                        <li><strong>Humidity:</strong> 45-55%, avoid too dry or too humid conditions</li>
+                        <li><strong>Cleaning:</strong> Use microfiber cloth, no chemicals</li>
+                        <li><strong>Handling:</strong> Avoid impacts, place on felt pads</li>
+                    </ul>
+                    
+                    <h4>Influence on Design:</h4>
+                    <p>Dunand's lacquered furniture has inspired many modern designers. Luxury brands like Hermès and Louis Vuitton have applied similar techniques to their furniture collections.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lacquer Objects Modal -->
+    <div id="lacquer-objects-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Lacquer Decorative Objects: Exquisite Art</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/lacquer-objects.jpg" alt="Lacquer Decorative Objects" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Dunand Decorative Lacquer Objects</h3>
+                    <p>Jean Dunand created thousands of decorative objects using lacquer techniques. From small vases to complex jewelry boxes, each piece demonstrated the perfect combination of function and beauty.</p>
+                    
+                    <h4>Product Categories:</h4>
+                    <ul>
+                        <li><strong>Vases:</strong> From 15cm to 60cm, diverse shapes</li>
+                        <li><strong>Jewelry boxes:</strong> With intricate compartments</li>
+                        <li><strong>Serving trays:</strong> For serving or display</li>
+                        <li><strong>Cigarette cases:</strong> With personalizations</li>
+                        <li><strong>Vanity mirrors:</strong> Hand mirrors with decorated handles</li>
+                    </ul>
+                    
+                    <h4>Miniature Crafting Techniques:</h4>
+                    <ul>
+                        <li><strong>Micro-lacquering:</strong> Applying lacquer to small surfaces</li>
+                        <li><strong>Detail work:</strong> Detailed painting with size 000 brushes</li>
+                        <li><strong>Miniature inlay:</strong> Attaching small shell and pearl pieces</li>
+                        <li><strong>Precision grinding:</strong> Polishing curves and edges</li>
+                        <li><strong>Interior finishing:</strong> Finishing inside of objects</li>
+                    </ul>
+                    
+                    <h4>Themes and Motifs:</h4>
+                    <ul>
+                        <li><strong>Floral:</strong> Stylized lotus, chrysanthemum, cherry blossom</li>
+                        <li><strong>Animal:</strong> Dragons, phoenix, carp, butterflies</li>
+                        <li><strong>Landscape:</strong> Mountains, rivers, miniature trees</li>
+                        <li><strong>Geometric:</strong> Art Deco patterns, zigzag, chevron</li>
+                        <li><strong>Abstract:</strong> Color fields, gradients, textures</li>
+                    </ul>
+                    
+                    <h4>Special Techniques:</h4>
+                    <ul>
+                        <li><strong>Eggshell inlay:</strong> Attaching eggshell pieces for texture</li>
+                        <li><strong>Gold leaf:</strong> Applying gold leaf in patterns</li>
+                        <li><strong>Pearl powder:</strong> Sprinkling pearl powder on wet lacquer</li>
+                        <li><strong>Metallic accents:</strong> Accents using silver, copper</li>
+                        <li><strong>Raised relief:</strong> Creating 3D effects with multiple layers</li>
+                    </ul>
+                    
+                    <h4>Object Creation Process:</h4>
+                    <ul>
+                        <li><strong>Form making:</strong> Creating shapes with wood or papier-mâché</li>
+                        <li><strong>Base preparation:</strong> Surface treatment, prime coating</li>
+                        <li><strong>Layer building:</strong> 8-12 base lacquer layers</li>
+                        <li><strong>Decoration phase:</strong> Applying designs and patterns</li>
+                        <li><strong>Final finishing:</strong> Protective coats and polishing</li>
+                    </ul>
+                    
+                    <h4>Sizes and Dimensions:</h4>
+                    <ul>
+                        <li><strong>Miniatures:</strong> 5-10cm, personal accessories</li>
+                        <li><strong>Small objects:</strong> 10-20cm, desk accessories</li>
+                        <li><strong>Medium pieces:</strong> 20-40cm, decorative vases</li>
+                        <li><strong>Large objects:</strong> 40-60cm, statement pieces</li>
+                        <li><strong>Oversized:</strong> 60cm+, architectural elements</li>
+                    </ul>
+                    
+                    <h4>Signatures and Authentication:</h4>
+                    <ul>
+                        <li><strong>Signature styles:</strong> "J. Dunand" in different fonts</li>
+                        <li><strong>Date marks:</strong> Production year marked</li>
+                        <li><strong>Workshop marks:</strong> Symbols of different craftsmen</li>
+                        <li><strong>Provenance:</strong> Documentation from original clients</li>
+                        <li><strong>Condition reports:</strong> Professional assessments</li>
+                    </ul>
+                    
+                    <h4>Collectors and Markets:</h4>
+                    <ul>
+                        <li><strong>Private collectors:</strong> 70% pieces in private hands</li>
+                        <li><strong>Museums:</strong> Major pieces in public collections</li>
+                        <li><strong>Auction houses:</strong> Sotheby's, Christie's regular sales</li>
+                        <li><strong>Dealers:</strong> Specialist galleries in Paris, London, NY</li>
+                        <li><strong>Values:</strong> $5,000-$500,000 depending on piece</li>
+                    </ul>
+                    
+                    <h4>Care and Maintenance:</h4>
+                    <ul>
+                        <li><strong>Handling:</strong> Wear cotton gloves, support properly</li>
+                        <li><strong>Storage:</strong> Padded boxes, climate controlled</li>
+                        <li><strong>Display:</strong> Away from direct sunlight, stable temp</li>
+                        <li><strong>Cleaning:</strong> Dry dusting only, professional cleaning</li>
+                        <li><strong>Restoration:</strong> Only by certified lacquer specialists</li>
+                    </ul>
+                    
+                    <h4>Contemporary Influence:</h4>
+                    <p>Dunand's decorative objects have inspired contemporary artists and luxury brands. Many modern artisans still learn techniques from his works and apply them to modern designs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exotic Woods Modal -->
+    <div id="exotic-woods-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Exotic Woods: Special Art Deco Materials</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/exotic-woods.jpg" alt="Exotic Woods" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Exotic Woods in Art Deco</h3>
+                    <p>Art Deco designers revolutionized wood usage by seeking the rarest woods from around the world. They chose wood not only for durability but also for the natural beauty of wood grain.</p>
+                    
+                    <h4>Popular Exotic Wood Types:</h4>
+                    <ul>
+                        <li><strong>Ebony Wood:</strong> From Africa, pure black, extremely hard (Janka hardness: 3,220 lbf)</li>
+                        <li><strong>Amboyna Wood:</strong> From Indonesia, unique swirled grain like bird's eye</li>
+                        <li><strong>Palisander Wood:</strong> From South America, purple-red with characteristic fragrance</li>
+                        <li><strong>Zebrawood:</strong> From Africa, striped grain like zebra pattern</li>
+                        <li><strong>Thuya Burl:</strong> From Morocco, complex swirled grain</li>
+                    </ul>
+                    
+                    <h4>Technical Properties:</h4>
+                    <ul>
+                        <li><strong>Density:</strong> 0.8-1.2 g/cm³, 50-80% heavier than common wood</li>
+                        <li><strong>Moisture content:</strong> 6-8%, carefully kiln-dried</li>
+                        <li><strong>Stability:</strong> Minimal shrinkage, good warping resistance</li>
+                        <li><strong>Workability:</strong> Difficult to machine but produces beautiful finish</li>
+                        <li><strong>Durability:</strong> 100+ year lifespan with proper care</li>
+                    </ul>
+                    
+                    <h4>Processing Techniques:</h4>
+                    <ul>
+                        <li><strong>Quartersawn:</strong> Cut perpendicular to growth rings</li>
+                        <li><strong>Book-matching:</strong> Joining wood panels to create symmetrical patterns</li>
+                        <li><strong>Veneering:</strong> Slicing thin 0.6-0.8mm to conserve material</li>
+                        <li><strong>Edge-banding:</strong> Solid wood edging for veneer panels</li>
+                        <li><strong>Grain orientation:</strong> Arranging grain direction to optimize visual impact</li>
+                    </ul>
+                    
+                    <h4>Applications in Furniture:</h4>
+                    <ul>
+                        <li><strong>Tabletops:</strong> Table surfaces with grain patterns as centerpiece</li>
+                        <li><strong>Cabinet doors:</strong> Cabinet doors with book-matched veneers</li>
+                        <li><strong>Inlays:</strong> Inlay details contrasting with main wood</li>
+                        <li><strong>Decorative panels:</strong> Wall decoration panels and room dividers</li>
+                        <li><strong>Moldings:</strong> Decorative trim with contrasting woods</li>
+                    </ul>
+                    
+                    <h4>Finishing Process:</h4>
+                    <ul>
+                        <li><strong>Sanding progression:</strong> 120 → 220 → 320 → 400 grit</li>
+                        <li><strong>Grain filling:</strong> Filling pores with matching paste</li>
+                        <li><strong>Staining:</strong> Color staining to enhance natural colors</li>
+                        <li><strong>Sealing:</strong> Sanding sealer to lock in stain</li>
+                        <li><strong>Top coat:</strong> 3-5 coats of lacquer or polyurethane</li>
+                    </ul>
+                    
+                    <h4>Value and Investment:</h4>
+                    <p>Exotic woods range from $50-$500/board foot depending on type. Ebony and Amboyna are most expensive. Furniture using exotic woods typically increases in value 200-500% over common wood.</p>
+                    
+                    <h4>Sustainability Concerns:</h4>
+                    <ul>
+                        <li><strong>CITES regulations:</strong> Many exotic woods have export restrictions</li>
+                        <li><strong>Reclaimed sources:</strong> Reusing from old furniture and buildings</li>
+                        <li><strong>Certified forestry:</strong> FSC certified sustainable harvesting</li>
+                        <li><strong>Alternative species:</strong> Finding substitute woods with similar appearance</li>
+                    </ul>
+                    
+                    <h4>Care and Maintenance:</h4>
+                    <ul>
+                        <li><strong>Humidity control:</strong> 40-60% relative humidity</li>
+                        <li><strong>Temperature stable:</strong> 65-75°F, avoid extreme changes</li>
+                        <li><strong>UV protection:</strong> Avoid direct sunlight</li>
+                        <li><strong>Regular cleaning:</strong> Microfiber cloth with wood cleaner</li>
+                        <li><strong>Refinishing:</strong> Every 10-15 years depending on usage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Metal Work Modal -->
+    <div id="metal-work-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Premium Metals: Craftsmanship Art</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/metal-work.jpg" alt="Art Deco Metal Work" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Metals in Art Deco</h3>
+                    <p>Art Deco revolutionized the use of metals in furniture and decoration. From complex bronze casting to modern chrome plating, craftsmen elevated metalwork to high art.</p>
+                    
+                    <h4>Main Metal Types:</h4>
+                    <ul>
+                        <li><strong>Brass:</strong> 60-70% copper, 30-40% zinc, warm golden color</li>
+                        <li><strong>Bronze:</strong> 88% copper, 12% tin, good corrosion resistance</li>
+                        <li><strong>Chrome:</strong> Chromium plating on steel, mirror-bright finish</li>
+                        <li><strong>Nickel:</strong> Silvery finish, tarnish resistant</li>
+                        <li><strong>Stainless Steel:</strong> 18/8 or 18/10, modern and practical</li>
+                    </ul>
+                    
+                    <h4>Traditional Manufacturing Techniques:</h4>
+                    <ul>
+                        <li><strong>Sand casting:</strong> Casting bronze in sand molds</li>
+                        <li><strong>Lost wax casting:</strong> Cire perdue for intricate details</li>
+                        <li><strong>Repoussé:</strong> Creating relief shapes by hammering from behind</li>
+                        <li><strong>Chasing:</strong> Engraving details from the front</li>
+                        <li><strong>Engraving:</strong> Carving patterns with burin</li>
+                    </ul>
+                    
+                    <h4>Modern Techniques:</h4>
+                    <ul>
+                        <li><strong>Electroplating:</strong> Chrome, nickel, gold electroplating</li>
+                        <li><strong>Powder coating:</strong> Electrostatic spray coating</li>
+                        <li><strong>Anodizing:</strong> Creating oxide layer on aluminum</li>
+                        <li><strong>PVD coating:</strong> Physical Vapor Deposition for colors</li>
+                        <li><strong>Laser cutting:</strong> Precise pattern cutting</li>
+                    </ul>
+                    
+                    <h4>Surface Finishes:</h4>
+                    <ul>
+                        <li><strong>Mirror polish:</strong> Ra 0.05-0.1 microns, reflecting 95%</li>
+                        <li><strong>Satin finish:</strong> 320-400 grit, soft sheen</li>
+                        <li><strong>Brushed:</strong> Linear grain pattern</li>
+                        <li><strong>Antique patina:</strong> Chemical patination process</li>
+                        <li><strong>Textured:</strong> Hammered, stippled, or etched patterns</li>
+                    </ul>
+                    
+                    <h4>Applications in Art Deco:</h4>
+                    <ul>
+                        <li><strong>Hardware:</strong> Handles, knobs, hinges with geometric designs</li>
+                        <li><strong>Lighting fixtures:</strong> Chandeliers, sconces with metallic frames</li>
+                        <li><strong>Decorative panels:</strong> Wall treatments and room dividers</li>
+                        <li><strong>Furniture accents:</strong> Table legs, chair frames, decorative inlays</li>
+                        <li><strong>Architectural elements:</strong> Elevator doors, stair railings</li>
+                    </ul>
+                    
+                    <h4>Joining Techniques:</h4>
+                    <ul>
+                        <li><strong>Soldering:</strong> Silver solder for brass joints</li>
+                        <li><strong>Brazing:</strong> Higher temperature for stronger joints</li>
+                        <li><strong>Welding:</strong> TIG welding for stainless steel</li>
+                        <li><strong>Mechanical fastening:</strong> Screws, rivets, clips</li>
+                        <li><strong>Adhesive bonding:</strong> Structural adhesives for modern assemblies</li>
+                    </ul>
+                    
+                    <h4>Quality Control:</h4>
+                    <ul>
+                        <li><strong>Thickness measurement:</strong> Coating thickness 25-50 microns</li>
+                        <li><strong>Adhesion testing:</strong> Cross-cut tape test</li>
+                        <li><strong>Corrosion resistance:</strong> Salt spray testing 96-240 hours</li>
+                        <li><strong>Color matching:</strong> Spectrophotometer for consistency</li>
+                        <li><strong>Surface roughness:</strong> Profilometer measurements</li>
+                    </ul>
+                    
+                    <h4>Maintenance Protocols:</h4>
+                    <ul>
+                        <li><strong>Regular cleaning:</strong> Microfiber cloth with appropriate cleaners</li>
+                        <li><strong>Polishing schedule:</strong> Monthly for high-touch areas</li>
+                        <li><strong>Protective coatings:</strong> Wax or clear coat touch-ups</li>
+                        <li><strong>Inspection routine:</strong> Check for corrosion, wear patterns</li>
+                        <li><strong>Professional restoration:</strong> Re-plating when necessary</li>
+                    </ul>
+                    
+                    <h4>Cost Considerations:</h4>
+                    <p>Chrome plating: $15-25/sq ft. Bronze casting: $50-150/lb. Custom brass hardware: $200-500/piece. High investment but 50+ year lifespan with proper care.</p>
+                    
+                    <h4>Modern Applications:</h4>
+                    <p>Luxury automotive, high-end appliances, hospitality industry still use Art Deco metalwork principles. CAD/CAM technology has made reproduction of classic designs more accessible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marble Stone Modal -->
+    <div id="marble-stone-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Natural Precious Stones: Eternal Beauty</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/marble-stone.jpg" alt="Marble and Stone" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Precious Stones in Art Deco</h3>
+                    <p>Art Deco elevated the use of natural stone from structural material to decorative art. Designers chose stones not only for strength but also for unique patterns and colors.</p>
+                    
+                    <h4>Premium Stone Types:</h4>
+                    <ul>
+                        <li><strong>Carrara Marble:</strong> From Italy, white with subtle grey veining</li>
+                        <li><strong>Nero Marquina:</strong> Black marble from Spain with white veining</li>
+                        <li><strong>Onyx:</strong> Translucent stone with dramatic banding</li>
+                        <li><strong>Travertine:</strong> Limestone with natural pitting and texture</li>
+                        <li><strong>Granite:</strong> Igneous rock with speckled patterns</li>
+                    </ul>
+                    
+                    <h4>Geological Properties:</h4>
+                    <ul>
+                        <li><strong>Hardness:</strong> Marble 3-4 Mohs, Granite 6-7 Mohs</li>
+                        <li><strong>Density:</strong> 2.5-2.8 g/cm³ for marble, 2.6-2.7 for granite</li>
+                        <li><strong>Porosity:</strong> 0.1-2% depending on stone type</li>
+                        <li><strong>Compressive strength:</strong> 100-200 MPa</li>
+                        <li><strong>Thermal conductivity:</strong> 2-4 W/mK, cool to touch</li>
+                    </ul>
+                    
+                    <h4>Quarrying Process:</h4>
+                    <ul>
+                        <li><strong>Site selection:</strong> Geological surveys for quality assessment</li>
+                        <li><strong>Block extraction:</strong> Diamond wire cutting for clean faces</li>
+                        <li><strong>Quality grading:</strong> A, B, C grades based on defects</li>
+                        <li><strong>Transportation:</strong> Special handling to avoid cracking</li>
+                        <li><strong>Storage:</strong> Climate-controlled warehouses</li>
+                    </ul>
+                    
+                    <h4>Fabrication Techniques:</h4>
+                    <ul>
+                        <li><strong>Sawing:</strong> Gang saws with diamond blades</li>
+                        <li><strong>Calibration:</strong> Thickness standardization ±1mm</li>
+                        <li><strong>Surface finishing:</strong> Polished, honed, brushed, flamed</li>
+                        <li><strong>Edge profiling:</strong> Bullnose, beveled, ogee profiles</li>
+                        <li><strong>Drilling:</strong> Core bits for faucet holes</li>
+                    </ul>
+                    
+                    <h4>Surface Finishes:</h4>
+                    <ul>
+                        <li><strong>Polished:</strong> 3000 grit, mirror-like finish</li>
+                        <li><strong>Honed:</strong> 400 grit, matte with subtle sheen</li>
+                        <li><strong>Leathered:</strong> Textured surface for grip</li>
+                        <li><strong>Bush-hammered:</strong> Rough texture for slip resistance</li>
+                        <li><strong>Sandblasted:</strong> Uniform matte finish</li>
+                    </ul>
+                    
+                    <h4>Art Deco Applications:</h4>
+                    <ul>
+                        <li><strong>Flooring:</strong> Book-matched slabs with geometric patterns</li>
+                        <li><strong>Wall cladding:</strong> Feature walls with dramatic veining</li>
+                        <li><strong>Countertops:</strong> Kitchen and bathroom surfaces</li>
+                        <li><strong>Furniture:</strong> Table tops, pedestals, decorative objects</li>
+                        <li><strong>Architectural details:</strong> Columns, moldings, trim work</li>
+                    </ul>
+                    
+                    <h4>Installation Methods:</h4>
+                    <ul>
+                        <li><strong>Mechanical anchoring:</strong> Stainless steel clips and anchors</li>
+                        <li><strong>Adhesive mounting:</strong> Structural adhesives for thin slabs</li>
+                        <li><strong>Mortar bed:</strong> Traditional setting for thick stones</li>
+                        <li><strong>Dry mounting:</strong> Clip systems for curtain walls</li>
+                        <li><strong>Pin mounting:</strong> Structural pins for heavy pieces</li>
+                    </ul>
+                    
+                    <h4>Sealing & Protection:</h4>
+                    <ul>
+                        <li><strong>Penetrating sealers:</strong> Silane/siloxane based</li>
+                        <li><strong>Topical sealers:</strong> Acrylic or urethane coatings</li>
+                        <li><strong>Impregnating sealers:</strong> Deep penetration for porous stones</li>
+                        <li><strong>Color enhancers:</strong> Wet-look finishes</li>
+                        <li><strong>Anti-graffiti coatings:</strong> Sacrificial films</li>
+                    </ul>
+                    
+                    <h4>Quality Standards:</h4>
+                    <ul>
+                        <li><strong>ASTM C615:</strong> Standard for granite dimension stone</li>
+                        <li><strong>ASTM C503:</strong> Standard for marble dimension stone</li>
+                        <li><strong>Absorption testing:</strong> <0.4% for Grade I marble</li>
+                        <li><strong>Flexural strength:</strong> Minimum 10.3 MPa</li>
+                        <li><strong>Freeze-thaw resistance:</strong> 25 cycles minimum</li>
+                    </ul>
+                    
+                    <h4>Maintenance Procedures:</h4>
+                    <ul>
+                        <li><strong>Daily cleaning:</strong> pH-neutral cleaners only</li>
+                        <li><strong>Stain removal:</strong> Poultice treatments for organic stains</li>
+                        <li><strong>Re-polishing:</strong> Diamond polishing pads</li>
+                        <li><strong>Crack repair:</strong> Color-matched epoxy fills</li>
+                        <li><strong>Re-sealing:</strong> Annual or bi-annual applications</li>
+                    </ul>
+                    
+                    <h4>Cost Analysis:</h4>
+                    <p>Carrara marble: $60-100/sq ft installed. Rare stones like Onyx: $200-500/sq ft. Fabrication adds 50-100% to material cost. Lifetime value excellent with proper maintenance.</p>
+                    
+                    <h4>Sustainability Aspects:</h4>
+                    <p>Natural stone is a renewable resource but extraction has environmental impact. Reclaimed stone from demolition projects is increasingly popular. Local sourcing reduces carbon footprint.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lacquer Technique Modal -->
+    <div id="lacquer-technique-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Traditional Lacquer: Eastern Art</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/lacquer-technique.jpg" alt="Lacquer Technique" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Traditional Lacquer Techniques</h3>
+                    <p>Lacquer (urushi) is one of the world's oldest and most sophisticated finishing techniques, adopted by Art Deco artisans to create surfaces with gloss and depth unachievable by any other method.</p>
+                    
+                    <h4>Urushi Origins:</h4>
+                    <ul>
+                        <li><strong>Raw material:</strong> Sap from Toxicodendron vernicifluum tree</li>
+                        <li><strong>Geographic origin:</strong> Primarily from Japan, Korea, China</li>
+                        <li><strong>Harvesting:</strong> Tapping trees 10+ years old</li>
+                        <li><strong>Annual yield:</strong> 200-300ml per tree per season</li>
+                        <li><strong>Seasonal timing:</strong> Best quality from Jun-Oct</li>
+                    </ul>
+                    
+                    <h4>Chemical Composition:</h4>
+                    <ul>
+                        <li><strong>Urushiol:</strong> 60-65%, main polymerizing agent</li>
+                        <li><strong>Polysaccharides:</strong> 5-7%, provides adhesion</li>
+                        <li><strong>Proteins:</strong> 2-3%, contributes to curing</li>
+                        <li><strong>Water:</strong> 20-25%, evaporates during cure</li>
+                        <li><strong>Minerals:</strong> 1-3%, affects final properties</li>
+                    </ul>
+                    
+                    <h4>Processing Steps:</h4>
+                    <ul>
+                        <li><strong>Collection:</strong> Fresh sap collected in bamboo containers</li>
+                        <li><strong>Filtration:</strong> Remove bark particles and impurities</li>
+                        <li><strong>Stirring:</strong> Manual mixing to achieve homogeneity</li>
+                        <li><strong>Dehydration:</strong> Controlled water removal process</li>
+                        <li><strong>Aging:</strong> 3-5 years maturation for optimal properties</li>
+                    </ul>
+                    
+                    <h4>Curing Mechanism:</h4>
+                    <ul>
+                        <li><strong>Humidity dependent:</strong> 75-85% RH required</li>
+                        <li><strong>Temperature range:</strong> 20-30°C optimal</li>
+                        <li><strong>Enzymatic action:</strong> Laccase enzyme catalyzes polymerization</li>
+                        <li><strong>Time frame:</strong> 6-24 hours per layer</li>
+                        <li><strong>Cross-linking:</strong> Forms irreversible polymer network</li>
+                    </ul>
+                    
+                    <h4>Traditional Application Process:</h4>
+                    <ul>
+                        <li><strong>Substrate prep:</strong> Wood sealed with several base coats</li>
+                        <li><strong>Base layers:</strong> 3-5 rough coats to build foundation</li>
+                        <li><strong>Intermediate layers:</strong> 10-15 refined coats</li>
+                        <li><strong>Final layers:</strong> 3-5 ultra-fine finishing coats</li>
+                        <li><strong>Total thickness:</strong> 100-300 microns when complete</li>
+                    </ul>
+                    
+                    <h4>Tools and Equipment:</h4>
+                    <ul>
+                        <li><strong>Brushes:</strong> Human hair, very fine and soft</li>
+                        <li><strong>Drying chamber:</strong> Humidity-controlled environment</li>
+                        <li><strong>Sanding tools:</strong> Charcoal powder, finest abrasives</li>
+                        <li><strong>Polishing stones:</strong> Natural abrasive minerals</li>
+                        <li><strong>Protective gear:</strong> Urushiol is highly allergenic</li>
+                    </ul>
+                    
+                    <h4>Finishing Techniques:</h4>
+                    <ul>
+                        <li><strong>Tsuya-dashi:</strong> High-gloss mirror finish</li>
+                        <li><strong>Kawa-dashi:</strong> Semi-matte leather-like finish</li>
+                        <li><strong>Nashi-ji:</strong> Textured pear-skin effect</li>
+                        <li><strong>Maki-e:</strong> Sprinkled metal powder decoration</li>
+                        <li><strong>Raden:</strong> Mother-of-pearl inlay work</li>
+                    </ul>
+                    
+                    <h4>Color Development:</h4>
+                    <ul>
+                        <li><strong>Natural urushi:</strong> Transparent to honey colored</li>
+                        <li><strong>Black urushi:</strong> Iron powder additions</li>
+                        <li><strong>Red urushi:</strong> Cinnabar (mercury sulfide) pigment</li>
+                        <li><strong>Colored urushi:</strong> Mineral pigments carefully selected</li>
+                        <li><strong>Layered effects:</strong> Multiple colors built up</li>
+                    </ul>
+                    
+                    <h4>Quality Standards:</h4>
+                    <ul>
+                        <li><strong>Surface smoothness:</strong> <1 micron Ra value</li>
+                        <li><strong>Gloss level:</strong> 95-98% specular reflection</li>
+                        <li><strong>Adhesion:</strong> Cross-cut test Class 0</li>
+                        <li><strong>Durability:</strong> Centuries of proven performance</li>
+                        <li><strong>Chemical resistance:</strong> Immune to most solvents</li>
+                    </ul>
+                    
+                    <h4>Art Deco Adaptations:</h4>
+                    <ul>
+                        <li><strong>Western substrates:</strong> Applied to furniture woods</li>
+                        <li><strong>Geometric patterns:</strong> Art Deco motifs incorporated</li>
+                        <li><strong>Metallic accents:</strong> Gold and silver powders</li>
+                        <li><strong>Color combinations:</strong> Black-red-gold schemes</li>
+                        <li><strong>Modern shapes:</strong> Applied to contemporary forms</li>
+                    </ul>
+                    
+                    <h4>Artisan Training:</h4>
+                    <ul>
+                        <li><strong>Apprenticeship:</strong> 5-7 years minimum training</li>
+                        <li><strong>Master certification:</strong> Traditional guild systems</li>
+                        <li><strong>Specialized skills:</strong> Different masters for different techniques</li>
+                        <li><strong>Cultural preservation:</strong> UNESCO Intangible Heritage</li>
+                        <li><strong>Modern programs:</strong> Art schools teaching traditional methods</li>
+                    </ul>
+                    
+                    <h4>Contemporary Applications:</h4>
+                    <ul>
+                        <li><strong>Luxury automotive:</strong> Interior trim pieces</li>
+                        <li><strong>Musical instruments:</strong> Piano finishes, guitar work</li>
+                        <li><strong>Jewelry:</strong> Watch faces and luxury accessories</li>
+                        <li><strong>Architecture:</strong> Decorative panels and feature walls</li>
+                        <li><strong>Art objects:</strong> Sculptures and decorative pieces</li>
+                    </ul>
+                    
+                    <h4>Maintenance Requirements:</h4>
+                    <ul>
+                        <li><strong>Cleaning:</strong> Soft dry cloth only</li>
+                        <li><strong>Environmental:</strong> Stable temperature and humidity</li>
+                        <li><strong>Handling:</strong> Avoid sharp impacts</li>
+                        <li><strong>Restoration:</strong> Only by trained specialists</li>
+                        <li><strong>Longevity:</strong> Can last 500+ years with proper care</li>
+                    </ul>
+                    
+                    <h4>Economic Aspects:</h4>
+                    <p>Master lacquer work commands $500-2000/sq ft. A single furniture piece can require 6-12 months completion. Investment value increases significantly over time due to rarity and craftsmanship quality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Leather Modal -->
+    <div id="luxury-leather-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Premium Leather: Noble Materials</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/luxury-leather.jpg" alt="Luxury Leather" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Premium Leather in Art Deco</h3>
+                    <p>The Art Deco period elevated the use of leather from purely functional material to luxury decorative element. Exotic leather types and sophisticated tanning techniques created surfaces with unique textures and patterns.</p>
+                    
+                    <h4>Exotic Leather Types:</h4>
+                    <ul>
+                        <li><strong>Shagreen (shark skin):</strong> From stingray, special granular texture</li>
+                        <li><strong>Crocodile skin:</strong> From Nile crocodile, dramatic scale patterns</li>
+                        <li><strong>Ostrich leather:</strong> Follicle patterns from South African ostriches</li>
+                        <li><strong>Snake skin:</strong> Python and cobra with scale patterns</li>
+                        <li><strong>Calfskin:</strong> Young cattle, extremely fine grain</li>
+                    </ul>
+                    
+                    <h4>Tanning Processes:</h4>
+                    <ul>
+                        <li><strong>Chrome tanning:</strong> Fast process, 1-2 days, blue-green color</li>
+                        <li><strong>Vegetable tanning:</strong> 6-8 weeks, plant tannins, natural colors</li>
+                        <li><strong>Aldehyde tanning:</strong> White leather, washable properties</li>
+                        <li><strong>Oil tanning:</strong> Chamois process, very soft texture</li>
+                        <li><strong>Combination tanning:</strong> Multiple methods for optimal properties</li>
+                    </ul>
+                    
+                    <h4>Surface Treatments:</h4>
+                    <ul>
+                        <li><strong>Embossing:</strong> Heat-pressed patterns, geometric Art Deco designs</li>
+                        <li><strong>Gilding:</strong> Gold leaf application over sized surfaces</li>
+                        <li><strong>Lacquering:</strong> High-gloss protective coatings</li>
+                        <li><strong>Waxing:</strong> Natural beeswax finishes</li>
+                        <li><strong>Dyeing:</strong> Aniline dyes for vibrant colors</li>
+                    </ul>
+                    
+                    <h4>Shagreen Preparation:</h4>
+                    <ul>
+                        <li><strong>Source material:</strong> Stingray skin from Southeast Asia</li>
+                        <li><strong>Cleaning process:</strong> Remove natural oils and proteins</li>
+                        <li><strong>Smoothing:</strong> Sand down natural bumps</li>
+                        <li><strong>Dyeing:</strong> Deep penetration colors</li>
+                        <li><strong>Mounting:</strong> Glued to wood substrate with precision</li>
+                    </ul>
+                    
+                    <h4>Application Techniques:</h4>
+                    <ul>
+                        <li><strong>Pattern matching:</strong> Align repeating designs</li>
+                        <li><strong>Edge finishing:</strong> Hand-stitched or glued seams</li>
+                        <li><strong>Padding:</strong> Horsehair or cotton batting</li>
+                        <li><strong>Tacking:</strong> Brass nails in geometric patterns</li>
+                        <li><strong>Welting:</strong> Piped edges for professional finish</li>
+                    </ul>
+                    
+                    <h4>Furniture Applications:</h4>
+                    <ul>
+                        <li><strong>Upholstery:</strong> Chair seats, backs, arm rests</li>
+                        <li><strong>Desktop covering:</strong> Full desk top protection</li>
+                        <li><strong>Cabinet doors:</strong> Leather-clad front panels</li>
+                        <li><strong>Wall panels:</strong> Room-height decorative installations</li>
+                        <li><strong>Accessories:</strong> Blotters, frames, desk sets</li>
+                    </ul>
+                    
+                    <h4>Color Palettes:</h4>
+                    <ul>
+                        <li><strong>Classic brown:</strong> Cognac, tobacco, chocolate shades</li>
+                        <li><strong>Black:</strong> Deep black with subtle sheen</li>
+                        <li><strong>Red:</strong> Burgundy, oxblood, crimson</li>
+                        <li><strong>Green:</strong> Forest, olive, racing green</li>
+                        <li><strong>Metallics:</strong> Gold, silver leaf treatments</li>
+                    </ul>
+                    
+                    <h4>Quality Assessment:</h4>
+                    <ul>
+                        <li><strong>Grain uniformity:</strong> Consistent texture patterns</li>
+                        <li><strong>Color fastness:</strong> Lightfastness testing</li>
+                        <li><strong>Flexibility:</strong> Leather should not crack when bent</li>
+                        <li><strong>Thickness consistency:</strong> ±10% variation maximum</li>
+                        <li><strong>Edge quality:</strong> Clean cuts without fraying</li>
+                    </ul>
+                    
+                    <h4>Preservation Methods:</h4>
+                    <ul>
+                        <li><strong>Climate control:</strong> 45-55% RH, 65-70°F</li>
+                        <li><strong>UV protection:</strong> Avoid direct sunlight</li>
+                        <li><strong>Regular cleaning:</strong> Specialized leather cleaners</li>
+                        <li><strong>Conditioning:</strong> Leather balms every 6-12 months</li>
+                        <li><strong>Professional restoration:</strong> Expert repair services</li>
+                    </ul>
+                    
+                    <h4>Historical Sources:</h4>
+                    <ul>
+                        <li><strong>Hermès:</strong> Provided luxury leathers for furniture makers</li>
+                        <li><strong>Tanners of Morocco:</strong> Traditional shagreen suppliers</li>
+                        <li><strong>English tanneries:</strong> Finest calfskin and pigskin</li>
+                        <li><strong>American suppliers:</strong> Buffalo and cattle hides</li>
+                        <li><strong>Italian craftsmen:</strong> Specialty decorative treatments</li>
+                    </ul>
+                    
+                    <h4>Modern Alternatives:</h4>
+                    <ul>
+                        <li><strong>Synthetic shagreen:</strong> Embossed vinyl reproductions</li>
+                        <li><strong>Vegan leathers:</strong> Plant-based alternatives</li>
+                        <li><strong>Recycled materials:</strong> Sustainable options</li>
+                        <li><strong>Hybrid materials:</strong> Leather-fabric combinations</li>
+                        <li><strong>Digital printing:</strong> Printed exotic patterns</li>
+                    </ul>
+                    
+                    <h4>Cost Factors:</h4>
+                    <p>Genuine shagreen: $200-500/sq ft. Crocodile: $300-800/sq ft. Fine calfskin: $50-150/sq ft. Labor-intensive applications add 200-400% to material costs. Vintage pieces with provenance command premium prices.</p>
+                    
+                    <h4>Sustainability Concerns:</h4>
+                    <ul>
+                        <li><strong>CITES regulations:</strong> Restricted trade in exotic species</li>
+                        <li><strong>Ethical sourcing:</strong> Certified sustainable practices</li>
+                        <li><strong>Alternative materials:</strong> High-quality synthetics</li>
+                        <li><strong>Restoration over replacement:</strong> Preserve existing pieces</li>
+                        <li><strong>Vintage market:</strong> Reclaimed materials from antiques</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crafting Techniques Modal -->
+    <div id="crafting-techniques-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Crafting Techniques: Exquisite Craftsmanship</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/crafting-techniques.jpg" alt="Art Deco Crafting" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Art Deco Crafting Techniques</h3>
+                    <p>Art Deco period witnessed the convergence of traditional hand craftsmanship with emerging industrial techniques. Artisans mastered complex methods to create furniture and decorative objects with unprecedented levels of detail and sophistication.</p>
+                    
+                    <h4>Marquetry (Wood Inlay):</h4>
+                    <ul>
+                        <li><strong>Veneer preparation:</strong> Woods sliced to 0.6-0.8mm thickness</li>
+                        <li><strong>Pattern transfer:</strong> Templates cut from paper or thin wood</li>
+                        <li><strong>Cutting technique:</strong> Fretsaw with extremely fine blades</li>
+                        <li><strong>Assembly method:</strong> Precise fitting with minimal gaps</li>
+                        <li><strong>Adhesive application:</strong> Hide glue or modern PVA</li>
+                    </ul>
+                    
+                    <h4>Inlay Work (Carving):</h4>
+                    <ul>
+                        <li><strong>Routing precision:</strong> Hand-carved recesses with exact depth</li>
+                        <li><strong>Material selection:</strong> Contrasting woods, metals, ivory</li>
+                        <li><strong>Fitting process:</strong> Trial fitting for perfect match</li>
+                        <li><strong>Securing methods:</strong> Pressure fitting or adhesive bonding</li>
+                        <li><strong>Flush finishing:</strong> Sanding to achieve smooth surface</li>
+                    </ul>
+                    
+                    <h4>Metal Inlay Techniques:</h4>
+                    <ul>
+                        <li><strong>Wire inlay:</strong> Brass or silver wire pressed into grooves</li>
+                        <li><strong>Sheet inlay:</strong> Thin metal sheets fitted into recesses</li>
+                        <li><strong>Powder inlay:</strong> Metal powder mixed with adhesive</li>
+                        <li><strong>Damascening:</strong> Pattern-welded metal surfaces</li>
+                        <li><strong>Niello work:</strong> Black metal alloy decorative technique</li>
+                    </ul>
+                    
+                    <h4>Joinery Methods:</h4>
+                    <ul>
+                        <li><strong>Dovetail joints:</strong> Hand-cut with precise angles</li>
+                        <li><strong>Mortise and tenon:</strong> Traditional strong connections</li>
+                        <li><strong>Dowel joints:</strong> Reinforced with wooden pins</li>
+                        <li><strong>Spline joints:</strong> Edge-glued panels with reinforcement</li>
+                        <li><strong>Laminated construction:</strong> Multiple layers for strength</li>
+                    </ul>
+                    
+                    <h4>Carving Techniques:</h4>
+                    <ul>
+                        <li><strong>Relief carving:</strong> Raised designs from background</li>
+                        <li><strong>Incised carving:</strong> Lines cut into surface</li>
+                        <li><strong>Chip carving:</strong> Geometric patterns by knife work</li>
+                        <li><strong>Sculptural carving:</strong> Three-dimensional forms</li>
+                        <li><strong>Machine carving:</strong> Router-based production methods</li>
+                    </ul>
+                    
+                    <h4>Geometric Pattern Creation:</h4>
+                    <ul>
+                        <li><strong>Compass work:</strong> Precise circular and arc elements</li>
+                        <li><strong>Ruler construction:</strong> Straight lines and angular patterns</li>
+                        <li><strong>Template systems:</strong> Repeatable pattern elements</li>
+                        <li><strong>Mathematical ratios:</strong> Golden ratio applications</li>
+                        <li><strong>Modular design:</strong> Scalable pattern systems</li>
+                    </ul>
+                    
+                    <h4>Surface Preparation:</h4>
+                    <ul>
+                        <li><strong>Hand sanding:</strong> Progressive grits 120-400</li>
+                        <li><strong>Scraping:</strong> Cabinet scrapers for glass-smooth finish</li>
+                        <li><strong>Grain raising:</strong> Water treatment before final sanding</li>
+                        <li><strong>Dust removal:</strong> Tack cloths and compressed air</li>
+                        <li><strong>Final inspection:</strong> Raking light check for defects</li>
+                    </ul>
+                    
+                    <h4>Finishing Applications:</h4>
+                    <ul>
+                        <li><strong>French polishing:</strong> Shellac applied with rubber pad</li>
+                        <li><strong>Lacquer spraying:</strong> Multiple thin coats</li>
+                        <li><strong>Oil finishing:</strong> Penetrating oils for natural look</li>
+                        <li><strong>Wax applications:</strong> Paste wax for soft sheen</li>
+                        <li><strong>Modern polyurethanes:</strong> Durable clear coatings</li>
+                    </ul>
+                    
+                    <h4>Quality Control Methods:</h4>
+                    <ul>
+                        <li><strong>Dimensional accuracy:</strong> ±1mm tolerance standards</li>
+                        <li><strong>Surface quality:</strong> <2 micron Ra measurements</li>
+                        <li><strong>Joint strength:</strong> Load testing for structural integrity</li>
+                        <li><strong>Finish durability:</strong> Abrasion and chemical resistance</li>
+                        <li><strong>Visual inspection:</strong> Color matching and pattern alignment</li>
+                    </ul>
+                    
+                    <h4>Tool Requirements:</h4>
+                    <ul>
+                        <li><strong>Hand planes:</strong> Smoothing, jack, and specialty planes</li>
+                        <li><strong>Chisels:</strong> Full range from 3mm to 50mm widths</li>
+                        <li><strong>Saws:</strong> Dovetail, tenon, fret, and veneer saws</li>
+                        <li><strong>Measuring tools:</strong> Precision rules, squares, gauges</li>
+                        <li><strong>Sharpening equipment:</strong> Stones, strops, guides</li>
+                    </ul>
+                    
+                    <h4>Modern Adaptations:</h4>
+                    <ul>
+                        <li><strong>CNC machining:</strong> Computer-controlled precision cutting</li>
+                        <li><strong>Laser cutting:</strong> Intricate veneer patterns</li>
+                        <li><strong>Water-jet cutting:</strong> Metal inlay pieces</li>
+                        <li><strong>3D printing:</strong> Complex pattern templates</li>
+                        <li><strong>Digital design:</strong> CAD-based pattern development</li>
+                    </ul>
+                    
+                    <h4>Apprenticeship Systems:</h4>
+                    <ul>
+                        <li><strong>Traditional guilds:</strong> European craft traditions</li>
+                        <li><strong>Master craftsmen:</strong> One-on-one training</li>
+                        <li><strong>Technical schools:</strong> Formal education programs</li>
+                        <li><strong>Workshop experience:</strong> Hands-on skill development</li>
+                        <li><strong>Certification programs:</strong> Standardized skill verification</li>
+                    </ul>
+                    
+                    <h4>Time Investment:</h4>
+                    <p>Simple marquetry panel: 40-60 hours. Complex inlay work: 100-200 hours. Master-level piece: 500-1000 hours. Training to proficiency: 5-7 years. Master level expertise: 15-20 years experience.</p>
+                    
+                    <h4>Economic Value:</h4>
+                    <p>Hand-crafted details add 300-500% to furniture value. Master craftsman rates: $75-150/hour. Rare techniques command premium pricing. Investment pieces appreciate significantly over time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luxury Interior Modal -->
+    <div id="luxury-interior-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Luxury Furniture: Modern Art Deco Heritage</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/luxury-interior-modern.jpg" alt="Modern Luxury Interior" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Art Deco in Modern Luxury Interiors</h3>
+                    <p>Leading luxury furniture brands worldwide still apply Art Deco design principles to create sophisticated and refined spaces. From Manhattan penthouses to Riviera villas, Art Deco influence remains a symbol of sophistication.</p>
+                    
+                    <h4>Leading Luxury Brands:</h4>
+                    <ul>
+                        <li><strong>Ralph Lauren Home:</strong> Classic American luxury with Art Deco influences</li>
+                        <li><strong>Hermès Maison:</strong> French elegance with geometric patterns</li>
+                        <li><strong>Armani Casa:</strong> Italian minimalism meets Art Deco sophistication</li>
+                        <li><strong>Fendi Casa:</strong> Bold patterns and luxury materials</li>
+                        <li><strong>Bentley Home:</strong> Automotive luxury translated to interiors</li>
+                    </ul>
+                    
+                    <h4>Modern Art Deco Elements:</h4>
+                    <ul>
+                        <li><strong>Geometric patterns:</strong> Stylized sunbursts, zigzags, chevrons</li>
+                        <li><strong>Metallic accents:</strong> Brass, chrome, gold finishes</li>
+                        <li><strong>Rich materials:</strong> Marble, exotic woods, fine leather</li>
+                        <li><strong>Bold colors:</strong> Black-gold-white schemes</li>
+                        <li><strong>Streamlined forms:</strong> Clean lines with decorative elements</li>
+                    </ul>
+                    
+                    <h4>Contemporary Applications:</h4>
+                    <ul>
+                        <li><strong>Lighting design:</strong> Sculptural chandeliers with geometric forms</li>
+                        <li><strong>Furniture pieces:</strong> Statement chairs, tables with Art Deco details</li>
+                        <li><strong>Wall treatments:</strong> Geometric wallpapers, metallic accents</li>
+                        <li><strong>Flooring:</strong> Parquet patterns, marble inlays</li>
+                        <li><strong>Accessories:</strong> Mirrors, vases, decorative objects</li>
+                    </ul>
+                    
+                    <h4>High-End Projects:</h4>
+                    <ul>
+                        <li><strong>432 Park Avenue NYC:</strong> $95M penthouse with Art Deco inspired interiors</li>
+                        <li><strong>One Hyde Park London:</strong> $240M apartment featuring custom Art Deco elements</li>
+                        <li><strong>Tour Odéon Monaco:</strong> Sky penthouse with bespoke Art Deco design</li>
+                        <li><strong>The Residences at Mandarin Oriental:</strong> Global luxury residential projects</li>
+                        <li><strong>St. Regis Residences:</strong> Signature Art Deco styling worldwide</li>
+                    </ul>
+                    
+                    <h4>Design Principles Applied:</h4>
+                    <ul>
+                        <li><strong>Symmetry:</strong> Balanced compositions with central focal points</li>
+                        <li><strong>Layered lighting:</strong> Ambient, task, accent lighting systems</li>
+                        <li><strong>Textural contrast:</strong> Smooth vs. textured surfaces</li>
+                        <li><strong>Scale relationships:</strong> Proportional harmony throughout spaces</li>
+                        <li><strong>Color psychology:</strong> Sophisticated palettes creating specific moods</li>
+                    </ul>
+                    
+                    <h4>Technology Integration:</h4>
+                    <ul>
+                        <li><strong>Smart home systems:</strong> Hidden technology preserving aesthetic</li>
+                        <li><strong>Automated lighting:</strong> Programmable scenes enhancing Art Deco elements</li>
+                        <li><strong>Climate control:</strong> Invisible systems maintaining comfort</li>
+                        <li><strong>Security systems:</strong> Discrete protection for valuable furnishings</li>
+                        <li><strong>Entertainment systems:</strong> Concealed AV equipment</li>
+                    </ul>
+                    
+                    <h4>Custom Manufacturing:</h4>
+                    <ul>
+                        <li><strong>Bespoke furniture:</strong> One-off pieces for specific projects</li>
+                        <li><strong>Artisan collaboration:</strong> Master craftsmen creating unique elements</li>
+                        <li><strong>Material sourcing:</strong> Rare woods, stones, metals</li>
+                        <li><strong>Prototype development:</strong> Multiple iterations to perfection</li>
+                        <li><strong>Quality control:</strong> Rigorous standards throughout production</li>
+                    </ul>
+                    
+                    <h4>Interior Design Process:</h4>
+                    <ul>
+                        <li><strong>Concept development:</strong> 3-6 months design phase</li>
+                        <li><strong>Material selection:</strong> Global sourcing of finest materials</li>
+                        <li><strong>Custom fabrication:</strong> 12-18 months production time</li>
+                        <li><strong>Installation coordination:</strong> White-glove delivery and setup</li>
+                        <li><strong>Final styling:</strong> Accessories and art placement</li>
+                    </ul>
+                    
+                    <h4>Investment Values:</h4>
+                    <ul>
+                        <li><strong>Project costs:</strong> $5,000-15,000/sq ft for luxury spaces</li>
+                        <li><strong>Custom pieces:</strong> $50,000-500,000 per major item</li>
+                        <li><strong>Appreciation rates:</strong> 5-15% annually for quality pieces</li>
+                        <li><strong>Resale values:</strong> Strong market for well-executed designs</li>
+                        <li><strong>Insurance values:</strong> Specialized coverage for unique items</li>
+                    </ul>
+                    
+                    <h4>Global Markets:</h4>
+                    <ul>
+                        <li><strong>New York:</strong> Financial district penthouses, Upper East Side</li>
+                        <li><strong>London:</strong> Mayfair, Knightsbridge luxury residences</li>
+                        <li><strong>Monaco:</strong> Monte Carlo high-end apartments</li>
+                        <li><strong>Hong Kong:</strong> Peak residences, luxury developments</li>
+                        <li><strong>Dubai:</strong> Palm Jumeirah, Downtown luxury towers</li>
+                    </ul>
+                    
+                    <h4>Celebrity Endorsements:</h4>
+                    <ul>
+                        <li><strong>Fashion designers:</strong> Karl Lagerfeld, Tom Ford interiors</li>
+                        <li><strong>Entertainment figures:</strong> Celebrity homes featuring Art Deco</li>
+                        <li><strong>Business leaders:</strong> CEO residences with signature styling</li>
+                        <li><strong>Royalty:</strong> Palace renovations incorporating modern Art Deco</li>
+                        <li><strong>Art collectors:</strong> Homes showcasing Art Deco collections</li>
+                    </ul>
+                    
+                    <h4>Sustainability Considerations:</h4>
+                    <ul>
+                        <li><strong>Material sourcing:</strong> Certified sustainable practices</li>
+                        <li><strong>Energy efficiency:</strong> LED lighting, smart systems</li>
+                        <li><strong>Longevity design:</strong> Timeless pieces reducing replacement needs</li>
+                        <li><strong>Local artisans:</strong> Supporting traditional craftsmanship</li>
+                        <li><strong>Restoration focus:</strong> Preserving existing Art Deco pieces</li>
+                    </ul>
+                    
+                    <h4>Future Trends:</h4>
+                    <p>Digital integration while maintaining classic aesthetics. Sustainable luxury materials. Global accessibility through virtual design consultations. Increased customization through advanced manufacturing. Art Deco-inspired smart homes combining tradition with cutting-edge technology.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotel Design Modal -->
+    <div id="hotel-design-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>5-Star Hotels: Art Deco Hospitality</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/hotel-design-modern.jpg" alt="Modern Hotel Design" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Art Deco in Hospitality Design</h3>
+                    <p>Many 5-star hotels worldwide have chosen Art Deco as their signature design language to create memorable experiences and differentiate in the competitive luxury market. This style evokes a sense of glamour, sophistication and timeless elegance.</p>
+                    
+                    <h4>Iconic Art Deco Hotels:</h4>
+                    <ul>
+                        <li><strong>The Carlyle, NYC:</strong> Upper East Side landmark from 1930</li>
+                        <li><strong>Claridge's, London:</strong> Art Deco renovation by Thierry Despont</li>
+                        <li><strong>Hotel Martinez, Cannes:</strong> Riviera glamour with Art Deco styling</li>
+                        <li><strong>The Savoy, London:</strong> $340M renovation honoring Art Deco heritage</li>
+                        <li><strong>Park Hyatt Tokyo:</strong> Modern interpretation of Art Deco principles</li>
+                    </ul>
+                    
+                    <h4>Contemporary Art Deco Hotels:</h4>
+                    <ul>
+                        <li><strong>1 Hotels Brooklyn Bridge:</strong> Sustainable luxury with Art Deco touches</li>
+                        <li><strong>The Ritz-Carlton, Hong Kong:</strong> Sky-high luxury with geometric elements</li>
+                        <li><strong>Four Seasons George V, Paris:</strong> Classic French elegance</li>
+                        <li><strong>Aman Tokyo:</strong> Japanese minimalism meets Art Deco</li>
+                        <li><strong>Edition Hotels:</strong> Ian Schrager's modern Art Deco interpretation</li>
+                    </ul>
+                    
+                    <h4>Design Elements Applied:</h4>
+                    <ul>
+                        <li><strong>Lobby design:</strong> Grand entrances with soaring ceilings, geometric patterns</li>
+                        <li><strong>Lighting schemes:</strong> Dramatic chandeliers, accent lighting, mood creation</li>
+                        <li><strong>Furniture selection:</strong> Custom pieces inspired by 1920s-30s designs</li>
+                        <li><strong>Materials palette:</strong> Marble, brass, exotic woods, fine textiles</li>
+                        <li><strong>Color schemes:</strong> Sophisticated blacks, golds, creams, jewel tones</li>
+                    </ul>
+                    
+                    <h4>Guest Room Features:</h4>
+                    <ul>
+                        <li><strong>Bedroom design:</strong> Geometric headboards, mirrored surfaces, luxe linens</li>
+                        <li><strong>Bathroom luxury:</strong> Marble surfaces, Art Deco fixtures, dramatic lighting</li>
+                        <li><strong>Technology integration:</strong> Hidden systems preserving aesthetic integrity</li>
+                        <li><strong>Custom furniture:</strong> Bespoke pieces reflecting Art Deco sensibility</li>
+                        <li><strong>Artwork curation:</strong> Period pieces and contemporary interpretations</li>
+                    </ul>
+                    
+                    <h4>Public Space Design:</h4>
+                    <ul>
+                        <li><strong>Restaurants:</strong> Dining venues with theatrical Art Deco atmospheres</li>
+                        <li><strong>Bars & lounges:</strong> Speakeasy-inspired spaces with period details</li>
+                        <li><strong>Ballrooms:</strong> Grand event spaces with geometric ceiling treatments</li>
+                        <li><strong>Spa facilities:</strong> Wellness areas incorporating Art Deco tranquility</li>
+                        <li><strong>Business centers:</strong> Professional spaces with elegant appointments</li>
+                    </ul>
+                    
+                    <h4>Project Investment Levels:</h4>
+                    <ul>
+                        <li><strong>Renovation costs:</strong> $500,000-2M per room depending on scope</li>
+                        <li><strong>New construction:</strong> $1M-5M per room for luxury properties</li>
+                        <li><strong>FF&E budgets:</strong> $100,000-300,000 per room for furnishings</li>
+                        <li><strong>Art & accessories:</strong> $25,000-100,000 per room</li>
+                        <li><strong>Timeline:</strong> 18-36 months for major renovations</li>
+                    </ul>
+                    
+                    <h4>Guest Experience Impact:</h4>
+                    <ul>
+                        <li><strong>Brand differentiation:</strong> Unique positioning in competitive market</li>
+                        <li><strong>Rate premiums:</strong> 15-30% above comparable properties</li>
+                        <li><strong>Guest satisfaction:</strong> Higher scores for memorable experiences</li>
+                        <li><strong>Social media appeal:</strong> Instagram-worthy spaces driving bookings</li>
+                        <li><strong>Repeat business:</strong> Strong loyalty from design-conscious travelers</li>
+                    </ul>
+                    
+                    <h4>Design Team Collaboration:</h4>
+                    <ul>
+                        <li><strong>Interior designers:</strong> Specialists in luxury hospitality</li>
+                        <li><strong>Architects:</strong> Structural modifications respecting heritage</li>
+                        <li><strong>Lighting designers:</strong> Creating dramatic yet functional schemes</li>
+                        <li><strong>Art consultants:</strong> Curating appropriate collections</li>
+                        <li><strong>Brand consultants:</strong> Ensuring consistency with hotel identity</li>
+                    </ul>
+                    
+                    <h4>Technology Integration:</h4>
+                    <ul>
+                        <li><strong>Smart room controls:</strong> Invisible technology in period settings</li>
+                        <li><strong>Mood lighting:</strong> Programmable systems enhancing ambiance</li>
+                        <li><strong>Sound systems:</strong> High-quality audio without visual intrusion</li>
+                        <li><strong>Climate control:</strong> Whisper-quiet systems maintaining comfort</li>
+                        <li><strong>Security systems:</strong> Discrete protection for guests and artwork</li>
+                    </ul>
+                    
+                    <h4>Operational Considerations:</h4>
+                    <ul>
+                        <li><strong>Maintenance requirements:</strong> Specialized care for luxury finishes</li>
+                        <li><strong>Staff training:</strong> Understanding design heritage and guest education</li>
+                        <li><strong>Procurement systems:</strong> Sourcing replacement items for custom pieces</li>
+                        <li><strong>Insurance coverage:</strong> Protecting valuable design investments</li>
+                        <li><strong>Renovation planning:</strong> Phased approaches minimizing business disruption</li>
+                    </ul>
+                    
+                    <h4>Market Performance:</h4>
+                    <ul>
+                        <li><strong>RevPAR premiums:</strong> 20-40% above market average</li>
+                        <li><strong>Occupancy rates:</strong> Consistently higher performance</li>
+                        <li><strong>Guest demographics:</strong> Affluent, design-conscious travelers</li>
+                        <li><strong>Event bookings:</strong> Popular venues for high-end events</li>
+                        <li><strong>Award recognition:</strong> Design awards enhancing reputation</li>
+                    </ul>
+                    
+                    <h4>Regional Adaptations:</h4>
+                    <ul>
+                        <li><strong>Asian markets:</strong> Incorporating local cultural elements</li>
+                        <li><strong>European properties:</strong> Respecting historical building constraints</li>
+                        <li><strong>American hotels:</strong> Bold interpretations with modern conveniences</li>
+                        <li><strong>Middle Eastern luxury:</strong> Opulent materials and grand scale</li>
+                        <li><strong>Emerging markets:</strong> Art Deco as symbol of sophistication</li>
+                    </ul>
+                    
+                    <h4>Future Developments:</h4>
+                    <p>Sustainable luxury materials. Virtual reality guest previews. Personalized room customization. Integration with wellness trends. Adaptive spaces for changing guest needs. Art Deco aesthetic applied to boutique and lifestyle hotel segments.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Design Modal -->
+    <div id="product-design-modal" class="detail-modal">
+        <div class="detail-modal-content">
+            <span class="detail-close">&times;</span>
+            <div class="detail-modal-header">
+                <h2>Product Design: Art Deco in Modern Products</h2>
+                <div class="zigzag-pattern" style="width: 200px; margin: 1rem auto;"></div>
+            </div>
+            <div class="detail-modal-body">
+                <div class="modal-image-container">
+                    <img src="images/product-design-modern.jpg" alt="Modern Product Design" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="modal-content-scroll">
+                    <h3>Art Deco in Modern Product Design</h3>
+                    <p>Art Deco design principles still have strong influence in contemporary product design. From luxury automobiles to high-end electronics, designers apply geometric forms, premium materials and attention to detail to create products with timeless appeal.</p>
+                    
+                    <h4>Automotive Design:</h4>
+                    <ul>
+                        <li><strong>Rolls-Royce:</strong> Phantom series with Art Deco inspired interiors</li>
+                        <li><strong>Bentley:</strong> Continental GT featuring geometric dashboard elements</li>
+                        <li><strong>Mercedes-Maybach:</strong> S-Class with luxury appointments</li>
+                        <li><strong>Aston Martin:</strong> DB series incorporating streamlined Art Deco forms</li>
+                        <li><strong>Bugatti:</strong> Chiron with sculptural body language</li>
+                    </ul>
+                    
+                    <h4>Luxury Electronics:</h4>
+                    <ul>
+                        <li><strong>Bang & Olufsen:</strong> Audio equipment with geometric aesthetic</li>
+                        <li><strong>Apple:</strong> Product design philosophy influenced by Art Deco simplicity</li>
+                        <li><strong>Vertu:</strong> Luxury smartphones with precious material construction</li>
+                        <li><strong>Leica:</strong> Camera designs honoring Art Deco industrial heritage</li>
+                        <li><strong>Braun:</strong> Appliances featuring clean geometric forms</li>
+                    </ul>
+                    
+                    <h4>Timepiece Design:</h4>
+                    <ul>
+                        <li><strong>Cartier:</strong> Tank collection directly inspired by Art Deco</li>
+                        <li><strong>Jaeger-LeCoultre:</strong> Reverso with geometric case design</li>
+                        <li><strong>Van Cleef & Arpels:</strong> Art Deco motifs in jewelry watches</li>
+                        <li><strong>Patek Philippe:</strong> Calatrava series with minimalist elegance</li>
+                        <li><strong>Omega:</strong> De Ville collection featuring period-inspired elements</li>
+                    </ul>
+                    
+                    <h4>Home Appliances:</h4>
+                    <ul>
+                        <li><strong>Smeg:</strong> Retro refrigerators with Art Deco styling cues</li>
+                        <li><strong>KitchenAid:</strong> Stand mixers maintaining classic design language</li>
+                        <li><strong>Dyson:</strong> Vacuum cleaners with sculptural industrial design</li>
+                        <li><strong>Nespresso:</strong> Coffee machines featuring streamlined forms</li>
+                        <li><strong>Sub-Zero:</strong> Built-in appliances with architectural integration</li>
+                    </ul>
+                    
+                    <h4>Design Principles Applied:</h4>
+                    <ul>
+                        <li><strong>Geometric forms:</strong> Angular shapes, stepped profiles, linear elements</li>
+                        <li><strong>Streamlined aesthetics:</strong> Aerodynamic forms suggesting speed and efficiency</li>
+                        <li><strong>Premium materials:</strong> Metal finishes, exotic materials, precision construction</li>
+                        <li><strong>Functional beauty:</strong> Form following function with artistic expression</li>
+                        <li><strong>Attention to detail:</strong> Precise tolerances, quality finishes</li>
+                    </ul>
+                    
+                    <h4>Manufacturing Techniques:</h4>
+                    <ul>
+                        <li><strong>CNC machining:</strong> Precision manufacturing for complex geometries</li>
+                        <li><strong>Advanced materials:</strong> Carbon fiber, titanium, ceramic applications</li>
+                        <li><strong>Surface treatments:</strong> Anodizing, PVD coating, hand finishing</li>
+                        <li><strong>Assembly methods:</strong> Precision fitting, minimal fasteners</li>
+                        <li><strong>Quality control:</strong> Six Sigma processes ensuring consistency</li>
+                    </ul>
+                    
+                    <h4>Consumer Electronics:</h4>
+                    <ul>
+                        <li><strong>Smartphones:</strong> Premium models with metal construction, geometric forms</li>
+                        <li><strong>Laptops:</strong> Thin profiles, minimal aesthetics, quality materials</li>
+                        <li><strong>Audio equipment:</strong> Hi-fi components with architectural presence</li>
+                        <li><strong>Gaming hardware:</strong> Consoles featuring sophisticated industrial design</li>
+                        <li><strong>Wearables:</strong> Smartwatches inspired by luxury timepiece tradition</li>
+                    </ul>
+                    
+                    <h4>Furniture & Lighting:</h4>
+                    <ul>
+                        <li><strong>Task lighting:</strong> Desk lamps with adjustable geometric elements</li>
+                        <li><strong>Seating design:</strong> Office chairs featuring ergonomic Art Deco forms</li>
+                        <li><strong>Storage solutions:</strong> Modular systems with clean geometric lines</li>
+                        <li><strong>Decorative lighting:</strong> Pendant and floor lamps with period inspiration</li>
+                        <li><strong>Workspace furniture:</strong> Desks combining function with aesthetic appeal</li>
+                    </ul>
+                    
+                    <h4>Packaging Design:</h4>
+                    <ul>
+                        <li><strong>Luxury goods:</strong> Boxes and containers reflecting product quality</li>
+                        <li><strong>Cosmetics:</strong> Geometric packaging with premium finishes</li>
+                        <li><strong>Spirits:</strong> Bottle designs featuring Art Deco motifs</li>
+                        <li><strong>Technology:</strong> Product packaging reinforcing design language</li>
+                        <li><strong>Jewelry:</strong> Presentation cases honoring Art Deco tradition</li>
+                    </ul>
+                    
+                    <h4>Market Positioning:</h4>
+                    <ul>
+                        <li><strong>Premium positioning:</strong> Art Deco associations with luxury and quality</li>
+                        <li><strong>Target demographics:</strong> Affluent, design-conscious consumers</li>
+                        <li><strong>Price premiums:</strong> 20-50% above comparable products</li>
+                        <li><strong>Brand differentiation:</strong> Unique positioning in competitive markets</li>
+                        <li><strong>Collector appeal:</strong> Limited editions with investment potential</li>
+                    </ul>
+                    
+                    <h4>Design Process:</h4>
+                    <ul>
+                        <li><strong>Research phase:</strong> Historical analysis, trend forecasting</li>
+                        <li><strong>Concept development:</strong> Sketching, 3D modeling, prototyping</li>
+                        <li><strong>Material testing:</strong> Durability, aesthetics, cost analysis</li>
+                        <li><strong>User testing:</strong> Ergonomics, functionality validation</li>
+                        <li><strong>Production planning:</strong> Manufacturing optimization, quality systems</li>
+                    </ul>
+                    
+                    <h4>Global Trends:</h4>
+                    <ul>
+                        <li><strong>Sustainability:</strong> Eco-friendly materials with Art Deco aesthetics</li>
+                        <li><strong>Customization:</strong> Personalized products maintaining design coherence</li>
+                        <li><strong>Smart integration:</strong> Technology hidden within elegant forms</li>
+                        <li><strong>Cultural adaptation:</strong> Regional interpretations of Art Deco principles</li>
+                        <li><strong>Vintage revival:</strong> Retro-inspired products with modern functionality</li>
+                    </ul>
+                    
+                    <h4>Investment Returns:</h4>
+                    <ul>
+                        <li><strong>Development costs:</strong> Higher upfront investment in design and tooling</li>
+                        <li><strong>Manufacturing premiums:</strong> Quality materials and processes increase costs</li>
+                        <li><strong>Market performance:</strong> Strong sales to design-conscious segments</li>
+                        <li><strong>Brand value:</strong> Design leadership enhancing overall brand equity</li>
+                        <li><strong>Long-term appeal:</strong> Timeless designs maintaining relevance</li>
+                    </ul>
+                    
+                    <h4>Future Directions:</h4>
+                    <p>Sustainable luxury materials. AI-assisted design optimization. Mass customization capabilities. Augmented reality design tools. Global design collaboration platforms. Art Deco principles applied to emerging product categories like IoT devices and renewable energy products.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-dark); color: var(--primary-light); padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <div class="zigzag-pattern" style="margin: 0 auto 2rem; width: 300px;"></div>
+            <h3 style="color: var(--primary-gold); margin-bottom: 1rem;">ART DECO DESIGNERS</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Learn more about Art Deco's influence on modern design and art
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="artists.html" class="nav-link">Artists</a>
+                <a href="news.html" class="nav-link">News</a>
+            </div>
+            <div class="zigzag-pattern" style="margin: 2rem auto 0; width: 300px;"></div>
+        </div>
+    </footer>
+
+    <script>
+        // Art Deco Performance & Effects Manager
+        class ArtDecoEffects {
+            constructor() {
+                this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                this.particles = [];
+                this.init();
+            }
+
+            init() {
+                this.handleLoading();
+                if (!this.isReducedMotion) {
+                    this.initParticles();
+                    this.initParallax();
+                    this.initScrollReveal();
+                    this.initTypewriter();
+                }
+                this.initLazyLoading();
+            }
+
+            handleLoading() {
+                const loader = document.getElementById('art-deco-loader');
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                        }, 500);
+                    }, 1000);
+                });
+            }
+
+            initParticles() {
+                const particleContainer = document.getElementById('art-deco-particles');
+                const particleCount = Math.min(window.innerWidth / 50, 10); // Responsive particle count
+
+                for (let i = 0; i < particleCount; i++) {
+                    this.createParticle(particleContainer);
+                }
+
+                // Create new particles periodically
+                setInterval(() => {
+                    if (this.particles.length < particleCount) {
+                        this.createParticle(particleContainer);
+                    }
+                }, 2000);
+            }
+
+            createParticle(container) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 4 + 2;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 8;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = left + '%';
+                particle.style.animationDelay = delay + 's';
+                
+                container.appendChild(particle);
+                this.particles.push(particle);
+
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                        this.particles = this.particles.filter(p => p !== particle);
+                    }
+                }, 8000 + delay * 1000);
+            }
+
+            initParallax() {
+                const parallaxElements = document.querySelectorAll('.parallax-slow');
+                
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.5;
+                    
+                    parallaxElements.forEach(element => {
+                        if (element.getBoundingClientRect().top < window.innerHeight) {
+                            element.style.transform = `translateY(${rate}px)`;
+                        }
+                    });
+                });
+            }
+
+            initScrollReveal() {
+                const revealElements = document.querySelectorAll('.reveal-element');
+                
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                revealElements.forEach(element => {
+                    revealObserver.observe(element);
+                });
+            }
+
+            initTypewriter() {
+                const heroTitle = document.querySelector('.hero-title');
+                if (heroTitle) {
+                    heroTitle.classList.add('typewriter');
+                }
+            }
+
+            initLazyLoading() {
+                const images = document.querySelectorAll('img[loading="lazy"]');
+                
+                if ('IntersectionObserver' in window) {
+                    const imageObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.style.transition = 'opacity 0.3s ease';
+                                img.style.opacity = '0';
+                                
+                                img.onload = () => {
+                                    img.style.opacity = '1';
+                                };
+                                
+                                imageObserver.unobserve(img);
+                            }
+                        });
+                    });
+
+                    images.forEach(img => imageObserver.observe(img));
+                }
+            }
+        }
+
+        // Initialize Art Deco Effects
+        document.addEventListener('DOMContentLoaded', () => {
+            window.artDecoEffectsInstance = new ArtDecoEffects();
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.art-deco-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Stagger animation for grid items
+        document.querySelectorAll('.art-deco-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Modal System
+        class ModalManager {
+            constructor() {
+                this.initializeModals();
+            }
+
+            initializeModals() {
+                // Get all clickable cards
+                const clickableCards = document.querySelectorAll('.clickable-card');
+                
+                // Add click event listeners
+                clickableCards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        const modalId = card.getAttribute('data-modal');
+                        this.openModal(modalId);
+                    });
+                });
+
+                // Close buttons
+                const closeButtons = document.querySelectorAll('.detail-close');
+                closeButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.closeModal();
+                    });
+                });
+
+                // Close when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('detail-modal')) {
+                        this.closeModal();
+                    }
+                });
+
+                // Close with ESC key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeModal();
+                    }
+                });
+            }
+
+            openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'flex';
+                    modal.style.opacity = '0';
+                    modal.style.transform = 'scale(0.9)';
+                    modal.style.transition = 'all 0.3s ease';
+                    
+                    // Animate in
+                    setTimeout(() => {
+                        modal.style.opacity = '1';
+                        modal.style.transform = 'scale(1)';
+                    }, 10);
+                    
+                    // Prevent body scroll
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            closeModal() {
+                const openModals = document.querySelectorAll('.detail-modal[style*="display: flex"]');
+                openModals.forEach(modal => {
+                    modal.style.opacity = '0';
+                    modal.style.transform = 'scale(0.9)';
+                    
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 300);
+                });
+                
+                // Restore body scroll
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Initialize modal manager
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalManager = new ModalManager();
+        });
+    </script>
+</body>
+</html> 
